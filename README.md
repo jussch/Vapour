@@ -12,3 +12,29 @@ Vapour
   - Checkout Page
   - Game Tagging
   - Profile Page
+
+
+###Schema:
+  - Users
+    - Username
+    - Password Digest
+    - Session Token
+    - Email
+    - Fname
+    - Lname
+    - Alias
+    - Profile Picture
+  - Profile
+    - Bio
+  - Game
+    - Title
+    - Synopsis
+    - Description
+    - Base Price
+    - Author ID
+  - Screenshot
+    - Game ID
+    - link
+  - Tags
+    - Game ID
+    - Type
