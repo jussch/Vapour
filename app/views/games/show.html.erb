@@ -4,6 +4,12 @@
   <a href="<%= edit_game_url(@game) %>">Edit Your Game</a>
 <% end %>
 
+<article class="screenshots">
+  <% @game.screenshots.each do |screenshot| %>
+    <img src="<%= screenshot.image_url %>" alt="" />
+  <% end %>
+</article>
+
 <section class="buy">
   Buy Now! <strong class="price"><%= @game.price %></strong>
 </section>

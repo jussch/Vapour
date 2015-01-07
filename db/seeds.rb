@@ -28,6 +28,29 @@ end
 TYPICAL_GAME_NAMES = %w(Slayer Dragon Keyboard Hero Resident-Evil Mario-Kart
   Super-Smash-Bros James-Bond Water Binding-Of-Isaac Dota2 Hearthstone)
 
+SCREENSHOTS = %w(
+https://placekitten.com/g/200/300
+https://placekitten.com/g/201/300
+https://placekitten.com/g/202/300
+https://placekitten.com/g/203/300
+https://placekitten.com/g/204/300
+https://placekitten.com/g/205/300
+https://placekitten.com/g/206/300
+https://placekitten.com/g/207/300
+https://placekitten.com/g/208/300
+https://placekitten.com/g/209/300
+https://placekitten.com/g/210/300
+https://placekitten.com/g/211/300
+https://placekitten.com/g/212/300
+https://placekitten.com/g/213/300
+https://placekitten.com/g/214/300
+https://placekitten.com/g/215/300
+https://placekitten.com/g/216/300
+https://placekitten.com/g/217/300
+https://placekitten.com/g/218/300
+https://placekitten.com/g/219/300
+)
+
 TYPICAL_GAME_NAMES.each do |game_name|
   game = Game.create({
     title: game_name,
@@ -40,6 +63,12 @@ TYPICAL_GAME_NAMES.each do |game_name|
     Tagging.create({
       game_id: game.id,
       tag_id: rand(1..TYPICAL_TAGS.length).floor
+    })
+  end
+  rand(2..4).floor.times do
+    Screenshot.create({
+      game_id: game.id,
+      image_url: SCREENSHOTS.sample
     })
   end
 end

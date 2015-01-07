@@ -25,7 +25,17 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signed_in!
-    redirect_to new_sessions_url unless signed_in?
+    unless signed_in?
+      flash[:errors] = "You must be logged in"
+      redirect_to new_sessions_url
+    end
+  end
+
+  def require_logged_out!
+    if signed_in?
+      flash[:errors] = "You must be logged out"
+      redirect_to games_url
+    end
   end
 
 end

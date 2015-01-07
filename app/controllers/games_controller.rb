@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_action :require_signed_in!, only: [:new, :edit, :create, :update]
+  before_action :require_signed_in!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @games = Game.all
@@ -36,6 +36,10 @@ class GamesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    game = Game.find(params[:id])
   end
 
   private
