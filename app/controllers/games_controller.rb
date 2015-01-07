@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+  before_action :require_signed_in!, only: [:new, :edit, :create, :update]
+
   def index
     @games = Game.all
   end
@@ -9,22 +11,20 @@ class GamesController < ApplicationController
   end
 
   def new
-    require_signed_in!
     @game = Game.new
   end
 
   def create
-    @game = Game.new(game_params)
-    @game.author_id = current_user.id
+    @game = current_user.authored_games.new(game_params)
     if @game.save
       redirect_to game_url(@game)
     else
+      flash.now[:errors] = @game.errors.full_messages
       render :new
     end
   end
 
   def edit
-    require_signed_in!
     @game = Game.find(params[:id])
     redirect_to game_url(@game) if @game.author_id != current_user.id
   end
@@ -40,6 +40,6 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title, :description, :synopsis, :price)
+    params.require(:game).permit(:title, :description, :synopsis, :price, tag_ids: [])
   end
 end

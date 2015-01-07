@@ -23,4 +23,15 @@
     min="0" max="9999" step="0.01" class="price">
 </label>
 
+<input type="hidden" name="game[tag_ids][]" value="">
+<section class="tag-selection">
+  <% Tag.all.each do |tag| %>
+    <label>
+      <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
+        <%= check_box?(tag,@game) %> >
+      <%= tag.name %>
+    </label>
+  <% end %>
+</section>
+
 <input type="submit" name="Submit" class="submit">

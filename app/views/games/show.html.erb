@@ -13,6 +13,11 @@
   <p class="synopsis">
     <%= @game.synopsis %>
   </p>
+  <ul class="tags">
+    <% @game.tags.each do |tag| %>
+      <li class="tag"><%= tag.name %></li>
+    <% end %>
+  </ul>
 </section>
 
 <section class="description">

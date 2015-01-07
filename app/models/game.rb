@@ -5,5 +5,6 @@ class Game < ActiveRecord::Base
     class_name: "User",
     foreign_key: :author_id
 
-  has_many :tags, inverse_of: :game, dependent: :destroy
+  has_many :taggings, inverse_of: :game, dependent: :destroy
+  has_many :tags, through: :taggings, source: :tag
 end
