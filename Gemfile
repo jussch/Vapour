@@ -44,7 +44,8 @@ group :development do
   gem 'byebug'
   gem 'pry-rails'
   gem 'quiet_assets'
-  gem 'faker'
 end
+
+gem 'faker'
 
 gem 'rails_12factor',  group: :production
