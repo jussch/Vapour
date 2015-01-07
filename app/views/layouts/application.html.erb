@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vapour</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if signed_in? %>
+  Hello <%= current_user.username %>
+  <form action="<%= sessions_url %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <%= auth_token_input %>
+    <button name="delete_button">LogOut</button>
+  </form>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

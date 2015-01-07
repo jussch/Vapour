@@ -1,0 +1,27 @@
+<h1><%= @game.title %></h1>
+
+<% if current_user.id === @game.author_id %>
+  <a href="<%= edit_game_url(@game) %>">Edit Your Game</a>
+<% end %>
+
+<section class="buy">
+  Buy Now! <strong class="price"><%= @game.price %></strong>
+</section>
+
+<section class="synopsis">
+  <h2>Synopsis</h2>
+  <p class="synopsis">
+    <%= @game.synopsis %>
+  </p>
+</section>
+
+<section class="description">
+  <h2>Description</h2>
+  <p class="description">
+    <%= @game.description %>
+  </p>
+</section>
+
+Authored by <%= @game.author.username %>
+<br>
+<a href="<%= games_url %>">Return to Game Index</a>

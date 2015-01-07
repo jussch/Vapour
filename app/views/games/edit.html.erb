@@ -1,0 +1,9 @@
+<h1>Edit <%= @game.title %></h1>
+
+<form action="<%= game_url(@game) %>" method="post">
+
+  <input type="hidden" name="_method" value="PATCH">
+
+  <%= render "form" %>
+
+</form>

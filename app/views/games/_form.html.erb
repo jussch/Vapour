@@ -1,0 +1,26 @@
+<%= auth_token_input %>
+
+<label>
+  Title
+  <input type="text" name="game[title]" value="<%= @game.title %>" class="title">
+</label>
+
+<label>
+  Synopsis
+  <textarea name="game[synopsis]" rows="8" cols="40" class="synopsis"
+    ><%= @game.synopsis %></textarea>
+</label>
+
+<label>
+  Description
+  <textarea name="game[description]" rows="12" cols="40" class="description"
+    ><%= @game.description %></textarea>
+</label>
+
+<label>
+  Price
+  <input type="number" name="game[price]" value="<%= @game.price %>"
+    min="0" max="9999" step="0.01" class="price">
+</label>
+
+<input type="submit" name="Submit" class="submit">

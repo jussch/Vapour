@@ -1,0 +1,9 @@
+<h1>Games</h1>
+
+<a href="<%= new_game_url %>">Add your game to the list</a>
+
+<ul class="game-list">
+  <% @games.each do |game| %>
+    <li class="game"><a href="<%= game_url(game) %>"><%= game.title %></a></li>
+  <% end %>
+</ul>
