@@ -46,3 +46,5 @@ group :development do
   gem 'quiet_assets'
   gem 'faker'
 end
+
+gem 'rails_12factor'  group: :production
