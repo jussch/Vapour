@@ -47,4 +47,4 @@ group :development do
   gem 'faker'
 end
 
-gem 'rails_12factor'  group: :production
+gem 'rails_12factor',  group: :production
