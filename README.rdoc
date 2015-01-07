@@ -1,6 +1,9 @@
 Vapour
 ======
 
+###Immediate TODOs:
+  - Adds forms for screenshots.
+
 ###MVP Todo List:
   - Homepage
   - Game List View
