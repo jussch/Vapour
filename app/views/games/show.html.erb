@@ -8,6 +8,11 @@
 <article class="screenshots">
   <% @game.screenshots.each do |screenshot| %>
     <img src="<%= screenshot.image_url %>" alt="" />
+    <form action="<%= screenshot_url(screenshot) %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <%= auth_token_input %>
+      <button name="delete" class="delete-screenshot">Delete</button>
+    </form>
   <% end %>
 </article>
 

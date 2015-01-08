@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       redirect_to games_url
     else
+      @user = User.new(username: params[:user][:username])
       render :new
     end
   end
