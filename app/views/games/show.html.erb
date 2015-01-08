@@ -1,6 +1,6 @@
 <h1><%= @game.title %></h1>
 
-<% if current_user.id === @game.author_id %>
+<% if current_user.try(:id) == @game.author_id %>
   <a href="<%= edit_game_url(@game) %>">Edit Your Game</a>
   <a href="<%= new_game_screenshot_url(@game) %>">Add Screenshots To Your Game</a>
 <% end %>
@@ -8,19 +8,22 @@
 <article class="screenshots">
   <% @game.screenshots.each do |screenshot| %>
     <img src="<%= screenshot.image_url %>" alt="" />
-    <form action="<%= screenshot_url(screenshot) %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <%= auth_token_input %>
-      <button name="delete" class="delete-screenshot">Delete</button>
-    </form>
+    <% if current_user.try(:id) == @game.author_id %>
+      <form action="<%= screenshot_url(screenshot) %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <%= auth_token_input %>
+        <button name="delete" class="delete-screenshot">Delete Screenshot</button>
+      </form>
+    <% end %>
   <% end %>
 </article>
 
 <section class="buy">
-  <form action="" method="post">
-
+  <form action="<%= game_transactions_url(@game) %>" method="post">
+    <%= auth_token_input %>
+    <input type="hidden" name="transaction[game_id]" value="<%= @game.id %>">
+    <button <%= current_user.try(:games).try(:include?,@game) ? "disabled" : "" %>>Buy Now!</button>
   </form>
-  Buy Now!
   <strong class="price">$<%= @game.price %></strong>
 </section>
 

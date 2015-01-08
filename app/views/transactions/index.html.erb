@@ -1,0 +1,26 @@
+<% total_price = 0 %>
+<h1>Cart</h1>
+
+<ul class="cart">
+  <% @transactions.each do |transaction| %>
+    <li>
+      <%= transaction.game.title %> -
+      <strong class='price'>$<%= transaction.game.price %></strong>
+      <% total_price += transaction.game.price %>
+      <form action="<%= transaction_url(transaction) %>" method="post">
+        <%= auth_token_input %>
+        <input type="hidden" name="transaction_id" value="<%= transaction.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <button name="remove-from-cart">Remove</button>
+      </form>
+    </li>
+  <% end %>
+</ul>
+
+Total: $<strong class="total"><%= total_price %></strong>
+<form action="<%= complete_transactions_url %>" method="post">
+  <%= auth_token_input %>
+  <button>Purchase The Games</button>
+</form>
+
+<a href="<%= games_url %>">Or continue shopping</a>
