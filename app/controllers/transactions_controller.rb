@@ -22,18 +22,7 @@ class TransactionsController < ApplicationController
   end
 
   def complete
-    @transactions = current_user.pending_transactions.includes(:game)
-    new_funds = current_user.funds
-    success = false
-    Transaction.transaction do
-      @transactions.each do |transaction|
-        transaction.complete!
-        new_funds -= transaction.game.price
-      end
-      current_user.update!(funds: new_funds)
-      success = true
-    end
-    if success
+    if checkout_transactions
       redirect_to user_url(current_user)
     else
       redirect_to transactions_url
@@ -43,5 +32,24 @@ class TransactionsController < ApplicationController
   private
   def transaction_params
     params.require(:transaction).permit(:game_id)
+  end
+
+  def checkout_transactions
+    @transactions = current_user.pending_transactions.includes(:game)
+    new_funds = current_user.funds
+    success = false
+    begin
+      Transaction.transaction do
+        @transactions.each do |transaction|
+          transaction.complete!
+          new_funds -= transaction.game.price
+        end
+        current_user.update!(funds: new_funds)
+        success = true
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:errors] = "not enough funds, please add more funds"
+    end
+    success
   end
 end

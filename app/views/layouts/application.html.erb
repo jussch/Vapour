@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<h1>VAPOUR</h1>
 <% if signed_in? %>
   Hello <a href="<%= user_url(current_user) %>"><%= current_user.username %></a>
   <strong class="funds">$<%= current_user.funds %></strong>
