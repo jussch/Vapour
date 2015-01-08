@@ -1,3 +1,21 @@
-<h1>Hey <%= @user.username %></h1>
+<h1><%= @user.username %></h1>
 
-Dis be your page.
+<% if current_user.id = @user.id %>
+  <form action="<%= add_funds_user_url(@user) %>" method="post">
+    <%= auth_token_input %>
+    <label>
+      ADD FUNDS
+      <input type="number" name="user[add_funds]" value="" min="1" step=".01" class="funds">
+    </label>
+    <input type="submit" name="Submit">
+  </form>
+<% end %>
+
+<h2>Games:</h2>
+<ul>
+  <% @user.bought_games.each do |game| %>
+    <li><%= game.title %></li>
+  <% end %>
+</ul>
+
+<a href="<%= games_url %>">Back to Game Store</a>

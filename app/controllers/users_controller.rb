@@ -20,6 +20,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_funds
+    @user = User.find(params[:id])
+    new_funds = @user.funds + params[:user][:add_funds].to_f
+    @user.update(funds: new_funds)
+    redirect_to user_url(@user)
+  end
+
   private
   def user_params
     params.require(:user).permit(:password, :username, :email)
