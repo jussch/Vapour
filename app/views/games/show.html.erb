@@ -2,6 +2,7 @@
 
 <% if current_user.id === @game.author_id %>
   <a href="<%= edit_game_url(@game) %>">Edit Your Game</a>
+  <a href="<%= new_game_screenshot_url(@game) %>">Add Screenshots To Your Game</a>
 <% end %>
 
 <article class="screenshots">

@@ -1,0 +1,16 @@
+<h1>Add a Screenshot to <%= @game.title %></h1>
+
+<form action="<%= screenshots_url %>" method="post">
+
+  <%= auth_token_input %>
+
+  <input type="hidden" name="screenshot[game_id]" value="<%= @game.id %>">
+
+  <label>
+    URL
+    <input type="text" name="screenshot[image_url]" value="<%= @screenshot.image_url %>">
+  </label>
+
+  <input type="submit" name="Submit">
+
+</form>
