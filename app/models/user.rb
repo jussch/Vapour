@@ -27,7 +27,11 @@ class User < ActiveRecord::Base
 
   def self.find_by_creds(username, password)
     user = User.find_by_username(username)
-
+    if user && user.is_password?(password)
+      user
+    else
+      nil
+    end
   end
 
   def password=(password)

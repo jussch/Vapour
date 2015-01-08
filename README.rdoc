@@ -2,7 +2,7 @@ Vapour
 ======
 
 ###Immediate TODOs:
-  - Adds forms for screenshots.
+  - Backbone: user auth, specifically session.
 
 ###MVP Todo List:
   - Homepage
