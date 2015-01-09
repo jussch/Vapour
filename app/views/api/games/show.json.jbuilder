@@ -7,3 +7,7 @@ end
 json.screenshots @game.screenshots do |screenshot|
   json.(screenshot, :id, :image_url)
 end
+
+json.tags @game.tags do |tag|
+  json.(tag, :id, :name)
+end

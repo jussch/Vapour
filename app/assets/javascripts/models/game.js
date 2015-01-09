@@ -10,10 +10,31 @@ Vapour.Models.Game = Backbone.Model.extend({
     return this._screenshots;
   },
 
+  tags: function () {
+    if (!this._tags) {
+      this._tags = new Vapour.Collections.GameTags([], {game: this});
+    }
+
+    return this._tags;
+  },
+
+  tagsInclude: function (tag) {
+    this.tags().each(function (myTag) {
+      if (myTag.id === tag.id) {
+        return true;
+      }
+    });
+    return false;
+  },
+
   parse: function (resp) {
     if (resp.screenshots) {
       this.screenshots().set(resp.screenshots, {parse: true});
       delete resp.screenshots;
+    }
+    if (resp.tags) {
+      this.tags().set(resp.tags, {parse: true});
+      delete resp.tags;
     }
     return resp;
   }

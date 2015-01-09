@@ -4,10 +4,12 @@ window.Vapour = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var games = new Vapour.Collections.Games();
-    games.fetch();
-    var $rootEl = $('#content')
-    new Vapour.Routers.Root({ games: games, $rootEl: $rootEl})
+    Vapour.Games = new Vapour.Collections.Games();
+    Vapour.Games.fetch();
+    Vapour.Tags = new Vapour.Collections.Tags();
+    Vapour.Tags.fetch();
+    var $rootEl = $('#content');
+    new Vapour.Routers.Root({ games: Vapour.Games, $rootEl: $rootEl});
     Backbone.history.start();
   }
 };

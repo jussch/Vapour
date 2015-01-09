@@ -1,4 +1,7 @@
-class Api::GamesController < ApplicationController
+class Api::GamesController < Api::BaseController
+
+  before_action :ensure_correct_author, only: [:update, :destroy]
+  before_action :require_signed_in!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @games = Game.all
@@ -18,11 +21,6 @@ class Api::GamesController < ApplicationController
   end
 
   def update
-    @game = Game.find(params[:id])
-    unless @game.author_id == current_user.id
-      render json: "you don't have access to that"
-      return
-    end
     if @game.update(game_params)
       render json: @game
     else
@@ -31,18 +29,20 @@ class Api::GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
-    unless @game.author_id == current_user.id
-      render json: "you don't have access to that"
-      return
-    end
     @game.destroy
-    redirect_to games_url
+    render json: @game
   end
 
   private
   def game_params
     params.require(:game).permit(:title, :description, :synopsis, :price, tag_ids: [])
+  end
+
+  def ensure_correct_author
+    @game = Game.find(params[:id])
+    unless @game.author_id == current_user.id
+      render json: "you don't have access to that" and return
+    end
   end
 
 end

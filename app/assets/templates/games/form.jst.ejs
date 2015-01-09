@@ -1,0 +1,47 @@
+<form class="game-form" method="post">
+
+  <% if (errors) { %>
+    <% errors.forEach(function (error) { %>
+      <%= error %>
+    <% }) %>
+  <% } %>
+
+  <label>
+    Title
+    <input type="text" name="game[title]" value="<%= game.get('title') %>" class="title">
+  </label>
+
+  <label>
+    Synopsis
+    <textarea name="game[synopsis]" rows="8" cols="40" class="synopsis"
+    ><%= game.get('synopsis') %></textarea>
+  </label>
+
+  <label>
+    Description
+    <textarea name="game[description]" rows="12" cols="40" class="description"
+    ><%= game.get('description') %></textarea>
+  </label>
+
+  <label>
+    Price
+    <input type="number" name="game[price]" value="<%= game.get('price') %>"
+    min="0" max="9999" step="0.01" class="price">
+  </label>
+
+  <input type="hidden" name="game[tag_ids][]" value="">
+  <section class="tag-selection">
+    <% tags.each(function(tag) { %>
+    <label>
+      <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
+      <% if (game.tagsInclude(tag)) { %>
+      <%=  "checked" %>
+      <% } %> >
+      <%= tag.get('name') %>
+    </label>
+    <% }); %>
+  </section>
+
+  <input type="submit" name="Submit" class="submit">
+
+</form>

@@ -23,6 +23,13 @@
   <p>
     <%= game.escape('synopsis') %>
   </p>
+  <ul class="tags">
+    <% game.tags().each( function(tag) { %>
+      <li class="tag">
+        <%= tag.get('name') %>
+      </li>
+    <% }) %>
+  </ul>
 </section>
 
 <section class="game-description">
