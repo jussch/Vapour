@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'root#index'
   resources :users, only: [:new, :create, :show] do
     post 'add_funds', on: :member
   end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:show, :create]
-    resource :session, only: [:create, :destroy]
+    resources :users, only: [:show]
+    resources :games, only: [:show, :index, :create, :destroy, :update]
   end
 end

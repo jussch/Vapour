@@ -4,7 +4,11 @@ window.Vapour = {
   Views: {},
   Routers: {},
   initialize: function() {
-    
+    var games = new Vapour.Collections.Games();
+    games.fetch();
+    var $rootEl = $('#content')
+    new Vapour.Routers.Root({ games: games, $rootEl: $rootEl})
+    Backbone.history.start();
   }
 };
 

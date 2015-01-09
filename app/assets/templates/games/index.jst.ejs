@@ -1,0 +1,11 @@
+<h1>Game Store</h1>
+
+<ul class="game-list">
+  <% games.each(function (game) { %>
+    <li class="game-item-list">
+      <a href="#games/<%= game.get('id') %>" class="game-item-link">
+        <%= game.escape('title') %>
+      </a>
+    </li>
+  <% }) %>
+</ul>

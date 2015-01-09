@@ -1,0 +1,35 @@
+<h1><%= game.escape('title') %></h1>
+
+<section class="game-screenshots">
+  <h2>Screenshots</h2>
+  <ul class="game-screenshot-list">
+    <% game.screenshots().each( function(screenshot){ %>
+      <li class="screenshot">
+        <img src="<%= screenshot.get('image_url') %>" alt="" />
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+
+<section class="game-buy">
+  Purchase <%= game.escape('title') %>:
+  <strong class="price"><%= game.get('price') %></strong>
+  <button name="game-buy">Buy Now!</button>
+</section>
+
+<section class="game-synopsis">
+  <h2><%= game.escape('title') %></h2>
+  <p>
+    <%= game.escape('synopsis') %>
+  </p>
+</section>
+
+<section class="game-description">
+  <h2>Description</h2>
+  <p>
+    <%= game.escape('description') %>
+  </p>
+</section>
+
+<a href="#">Back To Index</a>
