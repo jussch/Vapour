@@ -27,7 +27,7 @@ Vapour.Views.GamesForm = Backbone.View.extend({
     event.preventDefault();
     var $target = $(event.currentTarget);
 
-    var data = $target.serializeJSON().game;
+    var data = $target.serializeJSON();
 
     this.model.save(data,{
       success: function() {

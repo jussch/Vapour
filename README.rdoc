@@ -2,7 +2,8 @@ Vapour
 ======
 
 ###Immediate TODOs:
-  - Backbone: user auth, specifically session.
+  - Magic Wrapping Fix.
+  - Edit + New Screenshot + User Auth for those in Games.
 
 ###MVP Todo List:
   - Homepage

@@ -6,7 +6,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this.$headerEl = options.$headerEl;
     this.games = options.games;
 
-    var header = new Vapour.Views.HeaderMain({$modalEl: this.$modalEl});
+    var header = new Vapour.Views.HeaderMain({router: this});
     this.$headerEl.html(header.render().$el)
   },
 
@@ -15,8 +15,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
     "games": "gameIndex",
     "games/new": "gameNew",
     "games/:id": "gameShow",
-    "games/:id/edit": "gameEdit",
-    "log_in": "sessionNew"
+    "games/:id/edit": "gameEdit"
   },
 
   gameIndex: function () {
@@ -45,6 +44,12 @@ Vapour.Routers.Root = Backbone.Router.extend({
   sessionNew: function () {
     var session = new Vapour.Models.Session();
     var view = new Vapour.Views.SessionsForm({ model: session });
+    this.swapModal(view);
+  },
+
+  userNew: function () {
+    var user = new Vapour.Models.User();
+    var view = new Vapour.Views.UsersForm({ model: user });
     this.swapModal(view);
   },
 

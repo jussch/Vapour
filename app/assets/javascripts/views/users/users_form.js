@@ -1,6 +1,6 @@
-Vapour.Views.SessionsForm = Backbone.View.extend({
+Vapour.Views.UsersForm = Backbone.View.extend({
 
-  template: JST['sessions/form'],
+  template: JST['users/form'],
 
   render: function () {
     var content = this.template({
@@ -14,16 +14,16 @@ Vapour.Views.SessionsForm = Backbone.View.extend({
   },
 
   events: {
-    'submit .sign-in-form': 'createSession'
+    'submit .sign-up-form': 'createUser'
   },
 
-  createSession: function (event) {
+  createUser: function (event) {
     event.preventDefault();
     var $target = $(event.currentTarget);
 
     var data = $target.serializeJSON();
 
-    this.model.save(data,{
+    this.model.save(data, {
       success: function(model, resp) {
         Vapour.CurrentUser().set(resp);
         this.remove();

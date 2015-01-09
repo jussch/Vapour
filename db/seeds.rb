@@ -14,6 +14,13 @@ TYPICAL_TAGS.each do |tag_type|
   Tag.create(name: tag_type)
 end
 
+User.new({
+  username: "admin",
+  password: "password",
+  email: "admin@admin.com"
+}).save
+
+
 seeded_users = []
 5.times do
   user = User.new({

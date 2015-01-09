@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       sign_in(@user)
-      render json: @user
+      render "api/users/show"
     else
       @user = User.new(username: params[:username])
       render json: {errors: ['incorrect username or password']}, status: :unprocessable_entity

@@ -10,7 +10,18 @@ class Api::UsersController < Api::BaseController
       @user = current_user
       render :show
     else
-      render json: {notices: ["no current user"]}, status: :unprocessable_entity
+      render json: {notices: ["no current user"]}
+    end
+  end
+
+  def create
+    @user = User.new(user_params)
+    puts user_params
+    if @user.save
+      sign_in(@user)
+      render :show
+    else
+      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
