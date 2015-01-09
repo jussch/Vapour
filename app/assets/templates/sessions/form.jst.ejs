@@ -1,0 +1,19 @@
+<h1>Log In</h1>
+
+<form class="sign-in-form" method="post">
+
+  <label>
+    Username
+    <input type="text" name="user[username]" value="<%= user.get('username') %>">
+  </label>
+
+  <label>
+    Password
+    <input type="password" name="user[password]" value="">
+  </label>
+
+  <input type="submit" name="Submit">
+
+</form>
+
+<a href="#sign_up">Or Sign Up Here</a>

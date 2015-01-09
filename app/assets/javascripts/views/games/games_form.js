@@ -14,7 +14,7 @@ Vapour.Views.GamesForm = Backbone.View.extend({
       errors: this.errors
     });
     delete this.errors
-    
+
     this.$el.html(content);
     return this;
   },
@@ -25,7 +25,6 @@ Vapour.Views.GamesForm = Backbone.View.extend({
 
   createGame: function (event) {
     event.preventDefault();
-    console.log('got here')
     var $target = $(event.currentTarget);
 
     var data = $target.serializeJSON().game;
@@ -35,7 +34,7 @@ Vapour.Views.GamesForm = Backbone.View.extend({
         this.collection.add(this.model, { merge: true });
         Backbone.history.navigate('games/'+this.model.id, { trigger: true });
       }.bind(this),
-      error: function(model, resp, arg3) {
+      error: function(model, resp) {
         this.errors = resp.responseJSON.errors;
         this.render()
       }.bind(this)

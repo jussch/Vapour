@@ -27,6 +27,14 @@ Vapour.Models.Game = Backbone.Model.extend({
     return false;
   },
 
+  author: function () {
+    if (!this._author) {
+      this._author = new Vapour.Models.User()
+    }
+
+    return this._author;
+  },
+
   parse: function (resp) {
     if (resp.screenshots) {
       this.screenshots().set(resp.screenshots, {parse: true});
@@ -35,6 +43,10 @@ Vapour.Models.Game = Backbone.Model.extend({
     if (resp.tags) {
       this.tags().set(resp.tags, {parse: true});
       delete resp.tags;
+    }
+    if (resp.author) {
+      this.author().set(resp.author, {parse: true});
+      delete resp.author;
     }
     return resp;
   }

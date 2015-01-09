@@ -9,7 +9,8 @@ window.Vapour = {
     Vapour.Tags = new Vapour.Collections.Tags();
     Vapour.Tags.fetch();
     var $rootEl = $('#content');
-    new Vapour.Routers.Root({ games: Vapour.Games, $rootEl: $rootEl});
+    var $modalEl = $('#modal')
+    new Vapour.Routers.Root({ games: Vapour.Games, $rootEl: $rootEl, $modalEl: $modalEl});
     Backbone.history.start();
   }
 };

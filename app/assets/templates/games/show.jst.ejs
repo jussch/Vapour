@@ -14,7 +14,7 @@
 
 <section class="game-buy">
   Purchase <%= game.escape('title') %>:
-  <strong class="price"><%= game.get('price') %></strong>
+  <strong class="price">$<%= game.get('price') %></strong>
   <button name="game-buy">Buy Now!</button>
 </section>
 
@@ -37,6 +37,10 @@
   <p>
     <%= game.escape('description') %>
   </p>
+</section>
+
+<section class="author-ship">
+  Game by <%= game.author().escape('username') %>
 </section>
 
 <a href="#">Back To Index</a>

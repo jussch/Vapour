@@ -8,9 +8,11 @@ Vapour.Routers.Root = Backbone.Router.extend({
 
   routes: {
     "": "gameIndex",
+    "games": "gameIndex",
     "games/new": "gameNew",
     "games/:id": "gameShow",
-    "games/:id/edit": "gameEdit"
+    "games/:id/edit": "gameEdit",
+    "log_in": "sessionNew"
   },
 
   gameIndex: function () {
@@ -36,9 +38,22 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this.swapView(view);
   },
 
+  sessionNew: function () {
+    var session = new Vapour.Models.Session();
+    var view = new Vapour.Views.SessionsForm({ model: session });
+    this.swapModal(view);
+  },
+
   swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
+    this._currentModal && this._currentModal.remove();
+  },
+
+  swapModal: function (modal) {
+    this._currentModal && this._currentModal.remove();
+    this._currentModal = modal;
+    this.$modalEl.html(modal.render().$el);
   }
 });
