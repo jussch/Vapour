@@ -3,7 +3,11 @@ Vapour.Routers.Root = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.$modalEl = options.$modalEl;
+    this.$headerEl = options.$headerEl;
     this.games = options.games;
+
+    var header = new Vapour.Views.HeaderMain({$modalEl: this.$modalEl});
+    this.$headerEl.html(header.render().$el)
   },
 
   routes: {

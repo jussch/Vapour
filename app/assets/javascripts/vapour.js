@@ -8,10 +8,27 @@ window.Vapour = {
     Vapour.Games.fetch();
     Vapour.Tags = new Vapour.Collections.Tags();
     Vapour.Tags.fetch();
-    var $rootEl = $('#content');
-    var $modalEl = $('#modal')
-    new Vapour.Routers.Root({ games: Vapour.Games, $rootEl: $rootEl, $modalEl: $modalEl});
+    new Vapour.Routers.Root({
+      games: Vapour.Games,
+      $rootEl: $('#content'),
+      $modalEl: $('#modal'),
+      $headerEl: $('#header')
+    });
+
+    $.ajax({
+      url: "/api/users/current",
+      dataType: 'json',
+      success: function (resp) {
+        Vapour.CurrentUser().set(resp);
+      }
+    });
     Backbone.history.start();
+  },
+  CurrentUser: function () {
+    if (!Vapour._CurrentUser) {
+      Vapour._CurrentUser = new Vapour.Models.User();
+    }
+    return Vapour._CurrentUser;
   }
 };
 

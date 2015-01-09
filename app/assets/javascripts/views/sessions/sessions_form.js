@@ -25,6 +25,7 @@ Vapour.Views.SessionsForm = Backbone.View.extend({
 
     this.model.save(data,{
       success: function() {
+        Vapour.CurrentUser().set(this.model.attributes);
         this.remove()
       }.bind(this),
       error: function(model, resp) {

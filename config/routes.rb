@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      get 'current', on: :collection
+    end
     resource :sessions, only: [:create, :destroy]
     resources :games, only: [:show, :index, :create, :destroy, :update]
     resources :screenshots, only: [:show, :create, :destroy]

@@ -1,0 +1,20 @@
+<nav class="header-nav-bar">
+  <h1 class="page-title"><a href="#">Vapour</a></h1>
+  <ul class="main-links">
+    <li><a href="#" class="main-link">Store Page</a></li>
+  </ul>
+
+  <ul class="user-nav">
+    <% if (CurrUser.get('is_current_user')) { %>
+      <li>
+        <a href="#users/<%= Vapour.CurrentUser().id %>" class="user-link">
+          <%= CurrUser.escape('username') %>
+        </a>
+      </li>
+      <li><button class="log-out">Log Out</button></li>
+    <% } else { %>
+      <li><button class="log-in">Log In</button></li>
+      <li><button class="sign-up">Sign Up</button></li>
+    <% } %>
+  </ul>
+</nav>

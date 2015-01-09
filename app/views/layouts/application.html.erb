@@ -8,18 +8,6 @@
 </head>
 <body>
 
-<h1>VAPOUR</h1>
-<% if signed_in? %>
-  Hello <a href="<%= user_url(current_user) %>"><%= current_user.username %></a>
-  <strong class="funds">$<%= current_user.funds %></strong>
-  <form action="<%= sessions_url %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <%= auth_token_input %>
-    <button name="delete_button">LogOut</button>
-  </form>
-<% end %>
-
-<%= flash[:errors] %>
 
 <%= yield %>
 
