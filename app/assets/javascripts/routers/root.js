@@ -9,7 +9,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
     var header = new Vapour.Views.HeaderMain();
     this.$headerEl.html(header.render().$el)
 
-    this.listenTo(Vapour.Modal, 'swap', this.swapModal)
+    this.listenTo(this, 'swapModal', this.swapModal)
   },
 
   routes: {

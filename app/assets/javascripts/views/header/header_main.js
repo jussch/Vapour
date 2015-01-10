@@ -33,13 +33,13 @@ Vapour.Views.HeaderMain = Backbone.ExtendedView.extend({
   logIn: function (event) {
     var session = new Vapour.Models.Session();
     var view = new Vapour.Views.SessionsForm({ model: session });
-    Vapour.Modal.trigger('swap', view);
+    Vapour.RootRouter.trigger('swapModal', view);
   },
 
   signUp: function (event) {
     var user = new Vapour.Models.User();
     var view = new Vapour.Views.UsersForm({ model: user });
-    Vapour.Modal.trigger('swap', view);
+    Vapour.RootRouter.trigger('swapModal', view);
   }
 
 });
