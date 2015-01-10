@@ -1,4 +1,4 @@
-Vapour.Views.HeaderMain = Backbone.CompositeView.extend({
+Vapour.Views.HeaderMain = Backbone.ExtendedView.extend({
 
   template: JST['header/main'],
 
@@ -10,6 +10,7 @@ Vapour.Views.HeaderMain = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({ CurrUser: Vapour.CurrentUser() });
     this.$el.html(content);
+    this.addUserThumbs();
     return this;
   },
 

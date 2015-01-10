@@ -1,0 +1,9 @@
+<h1><%= user.escape('username') %></h1>
+
+<h2>Bought Games:</h2>
+
+<ul class="bought-games-list">
+  <% user.boughtGames().each(function (game) { %>
+    <li><%= game.get('title') %></li>
+  <% }) %>
+</ul>

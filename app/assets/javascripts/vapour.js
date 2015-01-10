@@ -8,6 +8,8 @@ window.Vapour = {
     Vapour.Games.fetch();
     Vapour.Tags = new Vapour.Collections.Tags();
     Vapour.Tags.fetch();
+    Vapour.Users = new Vapour.Collections.Users();
+    Vapour.Users.fetch();
     new Vapour.Routers.Root({
       games: Vapour.Games,
       $rootEl: $('#content'),

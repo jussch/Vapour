@@ -1,0 +1,5 @@
+<a href="#users/<%= user.id %>" class="user-link">
+  <% if (displayName) { %>
+    <%= user.escape('username') %>
+  <% } %>
+</a>

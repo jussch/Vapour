@@ -1,5 +1,9 @@
 class Api::UsersController < Api::BaseController
 
+  def index
+    @users = User.includes(:bought_games).all
+  end
+
   def show
     @user = User.find(params[:id])
     render :show

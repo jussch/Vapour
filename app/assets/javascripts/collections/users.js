@@ -1,5 +1,7 @@
-Vapour.Collections.Users = Backbone.Collection.extend({
+Vapour.Collections.Users = Backbone.ExtendedCollection.extend({
 
-  model: Vapour.Models.User
+  model: Vapour.Models.User,
+
+  url: "api/users"
 
 });

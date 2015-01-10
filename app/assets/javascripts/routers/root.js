@@ -15,7 +15,9 @@ Vapour.Routers.Root = Backbone.Router.extend({
     "games": "gameIndex",
     "games/new": "gameNew",
     "games/:id": "gameShow",
-    "games/:id/edit": "gameEdit"
+    "games/:id/edit": "gameEdit",
+    "users": "userIndex",
+    "users/:id": "userShow"
   },
 
   gameIndex: function () {
@@ -38,6 +40,17 @@ Vapour.Routers.Root = Backbone.Router.extend({
   gameEdit: function (id) {
     var game = this.games.getOrFetch(id);
     var view = new Vapour.Views.GamesForm({ model: game, collection: this.games });
+    this.swapView(view);
+  },
+
+  userIndex: function () {
+    var view = new Vapour.Views.UsersIndex({ collection: Vapour.Users });
+    this.swapView(view);
+  },
+
+  userShow: function (id) {
+    var user = Vapour.Users.getOrFetch(id);
+    var view = new Vapour.Views.UserShow({ model: user });
     this.swapView(view);
   },
 

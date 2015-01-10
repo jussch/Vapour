@@ -7,9 +7,9 @@
   <ul class="user-nav">
     <% if (CurrUser.get('is_current_user')) { %>
       <li>
-        <a href="#users/<%= Vapour.CurrentUser().id %>" class="user-link">
-          <%= CurrUser.escape('username') %>
-        </a>
+        <div class="user-thumb" data-id="<%= CurrUser.id %>" data-display-name="true">
+
+        </div>
       </li>
       <li><button class="log-out">Log Out</button></li>
     <% } else { %>
