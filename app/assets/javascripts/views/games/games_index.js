@@ -1,4 +1,4 @@
-Vapour.Views.GamesIndex = Backbone.View.extend({
+Vapour.Views.GamesIndex = Backbone.CompositeView.extend({
 
   template: JST['games/index'],
 

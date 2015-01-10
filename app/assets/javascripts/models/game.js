@@ -23,12 +23,18 @@ Vapour.Models.Game = Backbone.Model.extend({
   },
 
   tagsInclude: function (tag) {
-    this.tags().each(function (myTag) {
-      if (myTag.id === tag.id) {
+    for (var i = 0; i < this.tags().length; i++) {
+      if (this.tags().models[i].id === tag.id) {
         return true;
       }
-    });
+    }
     return false;
+  },
+
+  checkIfTagsInclude: function (tag) {
+    if (this.tagsInclude(tag)) {
+      return "checked";
+    }
   },
 
   author: function () {

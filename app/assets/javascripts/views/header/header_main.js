@@ -1,4 +1,4 @@
-Vapour.Views.HeaderMain = Backbone.View.extend({
+Vapour.Views.HeaderMain = Backbone.CompositeView.extend({
 
   template: JST['header/main'],
 

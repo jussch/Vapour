@@ -1,5 +1,9 @@
 <h1><%= game.escape('title') %></h1>
 
+<% if (Vapour.CurrentUser().id === game.author().id) { %>
+  <a href="#games/<%= game.id %>/edit">Edit Your Game</a>
+<% } %>
+
 <section class="game-screenshots">
   <h2>Screenshots</h2>
   <ul class="game-screenshot-list">

@@ -1,10 +1,13 @@
 <form class="game-form" method="post">
 
-  <% if (errors) { %>
-    <% errors.forEach(function (error) { %>
-      <%= error %>
-    <% }) %>
-  <% } %>
+  <ul class="errors">
+    <% if (errors) { %>
+      <% errors.forEach(function (error) { %>
+        <li><%= error %></li>
+      <% }) %>
+    <% } %>
+  </ul>
+
 
   <label>
     Title
@@ -34,9 +37,7 @@
     <% tags.each(function(tag) { %>
     <label>
       <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
-      <% if (game.tagsInclude(tag)) { %>
-      <%=  "checked" %>
-      <% } %> >
+      <%= game.checkIfTagsInclude(tag) %> >
       <%= tag.get('name') %>
     </label>
     <% }); %>

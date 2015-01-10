@@ -1,4 +1,4 @@
-Vapour.Views.GamesForm = Backbone.View.extend({
+Vapour.Views.GamesForm = Backbone.CompositeView.extend({
 
   template: JST['games/form'],
 

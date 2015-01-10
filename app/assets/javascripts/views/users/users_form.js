@@ -1,4 +1,4 @@
-Vapour.Views.UsersForm = Backbone.View.extend({
+Vapour.Views.UsersForm = Backbone.CompositeView.extend({
 
   template: JST['users/form'],
 

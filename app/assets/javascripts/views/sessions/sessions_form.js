@@ -1,4 +1,4 @@
-Vapour.Views.SessionsForm = Backbone.View.extend({
+Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
 
   template: JST['sessions/form'],
 
@@ -29,7 +29,6 @@ Vapour.Views.SessionsForm = Backbone.View.extend({
         this.remove();
       }.bind(this),
       error: function(model, resp) {
-        console.log(resp)
         this.errors = resp.responseJSON.errors;
         this.render();
       }.bind(this)
