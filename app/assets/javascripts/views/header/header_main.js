@@ -4,7 +4,6 @@ Vapour.Views.HeaderMain = Backbone.ExtendedView.extend({
 
   initialize: function (options) {
     this.listenTo(Vapour.CurrentUser(), "sync change", this.render);
-    this.router = options.router;
   },
 
   render: function () {
@@ -32,11 +31,15 @@ Vapour.Views.HeaderMain = Backbone.ExtendedView.extend({
   },
 
   logIn: function (event) {
-    this.router.sessionNew();
+    var session = new Vapour.Models.Session();
+    var view = new Vapour.Views.SessionsForm({ model: session });
+    Vapour.Modal.trigger('swap', view);
   },
 
   signUp: function (event) {
-    this.router.userNew();
+    var user = new Vapour.Models.User();
+    var view = new Vapour.Views.UsersForm({ model: user });
+    Vapour.Modal.trigger('swap', view);
   }
 
 });

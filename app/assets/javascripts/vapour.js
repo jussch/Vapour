@@ -3,6 +3,7 @@ window.Vapour = {
   Collections: {},
   Views: {},
   Routers: {},
+  Modal: {$el: $('#modal')},
   initialize: function() {
     Vapour.Games = new Vapour.Collections.Games();
     Vapour.Games.fetch();
@@ -10,6 +11,8 @@ window.Vapour = {
     Vapour.Tags.fetch();
     Vapour.Users = new Vapour.Collections.Users();
     Vapour.Users.fetch();
+
+    _.extend(Vapour.Modal, Backbone.Events)
     new Vapour.Routers.Root({
       games: Vapour.Games,
       $rootEl: $('#content'),

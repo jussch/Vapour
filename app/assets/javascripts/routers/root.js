@@ -6,8 +6,10 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this.$headerEl = options.$headerEl;
     this.games = options.games;
 
-    var header = new Vapour.Views.HeaderMain({router: this});
+    var header = new Vapour.Views.HeaderMain();
     this.$headerEl.html(header.render().$el)
+
+    this.listenTo(Vapour.Modal, 'swap', this.swapModal)
   },
 
   routes: {
@@ -52,18 +54,6 @@ Vapour.Routers.Root = Backbone.Router.extend({
     var user = Vapour.Users.getOrFetch(id);
     var view = new Vapour.Views.UserShow({ model: user });
     this.swapView(view);
-  },
-
-  sessionNew: function () {
-    var session = new Vapour.Models.Session();
-    var view = new Vapour.Views.SessionsForm({ model: session });
-    this.swapModal(view);
-  },
-
-  userNew: function () {
-    var user = new Vapour.Models.User();
-    var view = new Vapour.Views.UsersForm({ model: user });
-    this.swapModal(view);
   },
 
   swapView: function (view) {
