@@ -21,7 +21,7 @@ Vapour.Views.UsersForm = Backbone.View.extend({
     event.preventDefault();
     var $target = $(event.currentTarget);
 
-    var data = $target.serializeJSON();
+    var data = $target.serializeJSON().user;
 
     this.model.save(data, {
       success: function(model, resp) {

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     -> {where status: "PENDING"},
     class_name: "Transaction",
     dependent: :destroy
+    
   has_many :games, through: :transactions, source: :game
   has_many :bought_games, through: :complete_transactions, source: :game
   has_many :games_in_cart, through: :pending_transactions, source: :game

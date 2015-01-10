@@ -1,5 +1,14 @@
 <h1>Log In</h1>
 
+<ul class="errors">
+  <% if (errors) { %>
+    <% errors.forEach(function (error) { %>
+      <li><%= error %></li>
+    <% }) %>
+  <% } %>
+</ul>
+
+
 <form class="sign-in-form" method="post">
 
   <label>

@@ -21,7 +21,7 @@ Vapour.Views.SessionsForm = Backbone.View.extend({
     event.preventDefault();
     var $target = $(event.currentTarget);
 
-    var data = $target.serializeJSON();
+    var data = $target.serializeJSON().user;
 
     this.model.save(data,{
       success: function(model, resp) {
@@ -29,6 +29,7 @@ Vapour.Views.SessionsForm = Backbone.View.extend({
         this.remove();
       }.bind(this),
       error: function(model, resp) {
+        console.log(resp)
         this.errors = resp.responseJSON.errors;
         this.render();
       }.bind(this)
