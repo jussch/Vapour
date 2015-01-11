@@ -61,11 +61,13 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
     this._currentModal && this._currentModal.remove();
+    this.$modalEl.addClass('hidden');
   },
 
   swapModal: function (modal) {
     this._currentModal && this._currentModal.remove();
     this._currentModal = modal;
     this.$modalEl.html(modal.render().$el);
+    this.$modalEl.removeClass('hidden');
   }
 });

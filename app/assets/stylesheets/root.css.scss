@@ -5,7 +5,7 @@
 // RESET
 
 html, header, body, h1, h2, ul, li, a, div, main, section,
-article, nav, button, label, input, strong {
+article, nav, button, label, input, strong, textarea {
   border: 0;
   margin: 0;
   padding: 0;
@@ -81,7 +81,7 @@ nav {
   display: block;
 }
 
-button:hover, a:hover {
+.user-nav button:hover, a:hover {
   color: #fff;
 }
 
@@ -91,4 +91,25 @@ button:hover, a:hover {
   color: #ddd;
   width: 900px;
   margin: 0 auto;
+}
+
+#content h1 {
+  font-size: 26px;
+}
+
+
+// Modal
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #34598C;
+  box-shadow: 3px 3px 8px black;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
 }
