@@ -25,8 +25,16 @@ class Api::UsersController < Api::BaseController
       sign_in(@user)
       render :show
     else
-      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @user.errors.full_messages},
+        status: :unprocessable_entity
     end
+  end
+
+  def add_funds
+    @user = User.find(params[:id])
+    new_funds = @user.funds + params[:add_funds].to_f
+    @user.update(funds: new_funds)
+    render json: {notices: ["funds have been added"]}
   end
 
   private

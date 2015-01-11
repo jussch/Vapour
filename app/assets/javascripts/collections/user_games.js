@@ -4,7 +4,7 @@ Vapour.Collections.UserGames = Backbone.Collection.extend({
 
   url: "/api/games",
 
-  initialize: function (options) {
+  initialize: function (models, options) {
     this.owner = options.owner;
   }
 

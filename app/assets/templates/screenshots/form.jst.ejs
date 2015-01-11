@@ -1,5 +1,14 @@
 <h1>Add a Screenshot</h1>
 
+
+<ul class="errors">
+  <% if (errors) { %>
+    <% errors.forEach(function (error) { %>
+      <li><%= error %></li>
+    <% }) %>
+  <% } %>
+</ul>
+
 <form class="screenshot-form" method="post">
 
   <label>

@@ -16,10 +16,14 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:show, :index, :create] do
       get 'current', on: :collection
+      post 'add_funds', on: :member
     end
     resource :sessions, only: [:create, :destroy]
     resources :games, only: [:show, :index, :create, :destroy, :update]
     resources :screenshots, only: [:show, :create, :destroy]
     resources :tags, only: [:index]
+    resources :transactions, only: [:index, :destroy, :create] do
+      post 'complete', on: :collection
+    end
   end
 end

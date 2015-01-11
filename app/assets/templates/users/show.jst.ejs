@@ -1,5 +1,17 @@
 <h1><%= user.escape('username') %></h1>
 
+<% if (user.get('is_current_user')) { %>
+  Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
+  <form class="add-funds">
+    <label>
+      Amount
+      <input type="number" name="user[add_funds]" value="0.00"
+      min="0" max="9999" step="0.01" class="price">
+    </label>
+    <input type="submit" value="Add Funds">
+  </form>
+<% } %>
+
 <h2>Bought Games:</h2>
 
 <ul class="bought-games-list">

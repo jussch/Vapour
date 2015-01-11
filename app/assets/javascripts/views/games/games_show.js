@@ -15,7 +15,8 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    'click .add-screenshot': 'screenshotForm'
+    'click .add-screenshot': 'screenshotForm',
+    'click .game-buy': 'addToCart'
   },
 
   screenshotForm: function (event) {
@@ -28,6 +29,24 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
     });
 
     Vapour.RootRouter.trigger('swapModal', view);
+  },
+
+  addToCart: function (event) {
+    event.preventDefault();
+
+    var transaction = new Vapour.Models.Transaction();
+    transaction.save({game_id: this.model.id}, {
+      success: function (model) {
+        var collection = Vapour.CurrentUser().gamesInCart();
+        collection.add(transaction);
+        var view = new Vapour.Views.TransactionsIndex({collection: collection})
+        Vapour.RootRouter.trigger("swapModal", view)
+      },
+      error: function (model, resp) {
+        this.errors = resp.responseJSON.errors;
+        this.render();
+      }.bind(this)
+    });
   }
 
 });

@@ -1,0 +1,17 @@
+<h1>Cart</h1>
+
+<ul class="errors">
+  <% if (errors) { %>
+    <% errors.forEach(function (error) { %>
+      <li><%= error %></li>
+    <% }) %>
+  <% } %>
+</ul>
+
+
+<ul class="cart-list">
+</ul>
+
+Total: <strong class="price">$<%= transactions.totalPrice() %></strong>
+
+<button class="checkout">Checkout</button>
