@@ -1,10 +1,10 @@
-<nav class="header-nav-bar">
+<nav class="header-nav-bar group">
   <h1 class="page-title"><a href="#">Vapour</a></h1>
-  <ul class="main-links">
+  <ul class="main-links group">
     <li><a href="#" class="main-link">Store Page</a></li>
   </ul>
 
-  <ul class="user-nav">
+  <ul class="user-nav group">
     <% if (CurrUser.get('is_current_user')) { %>
       <li>
         <div class="user-thumb" data-id="<%= CurrUser.id %>" data-display-name="true">

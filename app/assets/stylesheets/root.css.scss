@@ -1,3 +1,94 @@
 // Place all the styles related to the root controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// RESET
+
+html, header, body, h1, h2, ul, li, a, div, main, section,
+article, nav, button, label, input, strong {
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  text-align: inherit;
+  background: transparent;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: default;
+  outline: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+
+// Clear Fix
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+// Header
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #001C42;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+#header {
+  background-color: #19203D;
+}
+
+nav {
+  width: 900px;
+  margin: 0 auto;
+  color: #ddd;
+}
+
+.page-title {
+  float: left;
+  font-size: 26px;
+}
+
+.main-links {
+  float: left;
+}
+
+.main-link {
+  float: left;
+  padding: 10px 20px;
+}
+
+.user-nav {
+  float: right;
+}
+
+.user-nav li {
+  float: left;
+}
+
+.user-nav button, .user-nav a {
+  padding: 10px 20px;
+  display: block;
+}
+
+button:hover, a:hover {
+  color: #fff;
+}
+
+// Body
+
+#content {
+  color: #ddd;
+  width: 900px;
+  margin: 0 auto;
+}
