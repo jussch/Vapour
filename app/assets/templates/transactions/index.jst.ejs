@@ -8,10 +8,13 @@
   <% } %>
 </ul>
 
+<% if (transactions.totalPrice() !== "0.00") { %>
+  <ul class="cart-list">
+  </ul>
 
-<ul class="cart-list">
-</ul>
+  Total: <strong class="price">$<%= transactions.totalPrice() %></strong>
 
-Total: <strong class="price">$<%= transactions.totalPrice() %></strong>
-
-<button class="checkout">Checkout</button>
+  <button class="checkout">Checkout</button>
+<% } else { %>
+  Nothing is in your Cart
+<% } %>

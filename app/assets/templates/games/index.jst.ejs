@@ -1,8 +1,8 @@
 <h1>Game Store</h1>
 
-<a href="#games/new">Submit a New Game!</a>
+<a href="#games/new" class="new-game">Submit a New Game!</a>
 
-<ul class="game-list">
+<ul class="game-list group">
   <% games.each(function (game) { %>
     <li class="game-item-list">
       <a href="#games/<%= game.get('id') %>" class="game-item-link">

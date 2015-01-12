@@ -15,7 +15,7 @@ Vapour.Collections.UserCart = Backbone.ExtendedCollection.extend({
       price += parseFloat(transaction.game().get('price'));
     });
 
-    return price;
+    return price.toFixed(2);
   }
 
 });

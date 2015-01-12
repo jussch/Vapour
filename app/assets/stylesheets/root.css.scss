@@ -37,7 +37,7 @@ ul {
 body {
   font-family: sans-serif;
   font-size: 16px;
-  background-color: #001C42;
+  background: linear-gradient(to right, #11141E 0%, #172030	15%, #172030 85%, #11141E 100%);
 }
 
 button, a {
@@ -45,44 +45,39 @@ button, a {
 }
 
 #header {
-  background-color: #19203D;
+  background-color: #171A21;
 }
 
-nav {
-  width: 900px;
-  margin: 0 auto;
-  color: #ddd;
-}
 
-.page-title {
-  float: left;
-  font-size: 26px;
-}
 
-.main-links {
-  float: left;
-}
+// Buttons
 
-.main-link {
-  float: left;
+.blue-button {
   padding: 10px 20px;
+  text-shadow: -1px -1px #046DB3;
+  color: #8FCBF2;
+  border: 2px solid #0A132B;
+  background: linear-gradient(to top, #046DB3, #0B86D9);
+  border-radius: 5px;
 }
 
-.user-nav {
-  float: right;
+.blue-button:hover {
+  color: white;
+  background: linear-gradient(to top, #057CCC, #0C96F2);
 }
 
-.user-nav li {
-  float: left;
-}
-
-.user-nav button, .user-nav a {
+.green-button {
   padding: 10px 20px;
-  display: block;
+  text-shadow: -1px -1px #437A16;
+  color: #96E366;
+  border: 2px solid #0A132B;
+  background: linear-gradient(to top, #437A16, #51941B);
+  border-radius: 5px;
 }
 
-.user-nav button:hover, a:hover {
-  color: #fff;
+.green-button:hover {
+  color: white;
+  background: linear-gradient(to top, #51941B, #5FAD1F);
 }
 
 // Body
@@ -95,6 +90,7 @@ nav {
 
 #content h1 {
   font-size: 26px;
+  margin: 20px 0;
 }
 
 

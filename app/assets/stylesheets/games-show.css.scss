@@ -1,0 +1,116 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Show
+
+.game-head {
+
+}
+
+.game-head > section {
+  float: left;
+}
+
+.game-screenshots {
+  width: 500px;
+  margin-right: 50px;
+}
+
+.game-synopsis {
+  width: 300px;
+}
+
+.game-main {
+  width: 600px;
+  box-sizing: border-box;
+  float: left;
+  padding: 10px;
+}
+
+.game-sidebar {
+  width: 300px;
+  box-sizing: border-box;
+  float: left;
+  padding: 10px;
+}
+
+.block {
+  background-color: #171A21;
+  padding: 20px;
+}
+
+.game-buy {
+  background: linear-gradient(to right, #333, #567);
+  position: relative;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 5px #171A21;
+}
+
+.game-buy-input {
+  position: absolute;
+  right: 15px;
+  bottom: 0;
+  transform: translateY(50%);
+  background: rgba(0,0,0,0.2);
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.game-buy-input > * {
+  float: left;
+}
+
+.game-buy-input .price {
+
+}
+
+.price {
+  display: block;
+  padding: 10px 20px;
+  background: #000;
+  width: 50px;
+  color: #aaa;
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.tag {
+  float: left;
+  font-size: 14px;
+  color: #67c1f5;
+  background: rgba(102, 195, 245, 0.2);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.tag > * {
+  padding: 0px 7px;
+  border-radius: 5px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.blue-h {
+  color: #67c1f5;
+}
+.blue-h:after {
+  display: block;
+  content: "";
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #67c1f5, rgba(103, 193, 245, 0));
+  height: 1px;
+}
+
+p {
+  color: #aaa;
+}
+
+.authorship {
+  color: #444;
+}

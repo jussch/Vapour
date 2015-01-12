@@ -1,51 +1,61 @@
-<h1><%= game.escape('title') %></h1>
+<h1 class="game-title"><%= game.escape('title') %></h1>
 
 <% if (Vapour.CurrentUser().id === game.author().id) { %>
-  <a href="#games/<%= game.id %>/edit">Edit Your Game</a>
-  <button class="add-screenshot">Add Screenshots</button>
+  <div class="block">
+    <a href="#games/<%= game.id %>/edit" class= "blue-button">Edit Your Game</a>
+    <button class="add-screenshot blue-button">Add Screenshots</button>
+  </div>
 <% } %>
 
-<section class="game-screenshots">
-  <h2>Screenshots</h2>
-  <ul class="game-screenshot-list">
-    <% game.screenshots().each( function(screenshot){ %>
-      <li class="screenshot">
-        <img src="<%= screenshot.get('image_url') %>" alt="" />
-      </li>
-    <% }) %>
-  </ul>
-</section>
+<article class="game-head block group">
+  <section class="game-screenshots">
+    <ul class="game-screenshot-list group">
+      <% game.screenshots().each( function(screenshot){ %>
+        <li class="screenshot">
+          <img src="<%= screenshot.get('image_url') %>" alt="" />
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <section class="game-synopsis">
+    <p>
+      <%= game.escape('synopsis') %>
+    </p>
+    <ul class="tags group">
+      <% game.tags().each( function(tag) { %>
+        <li class="tag">
+          <a href="#"><%= tag.get('name') %></a>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+</article>
 
 
-<section class="game-buy">
-  Purchase <%= game.escape('title') %>:
-  <strong class="price">$<%= game.get('price') %></strong>
-  <button name="game-buy">Buy Now!</button>
-</section>
+<article class="game-main">
+  <section class="game-buy">
+    Purchase <%= game.escape('title') %>
+    <div class="game-buy-input group">
+      <strong class="price">$<%= game.get('price') %></strong>
+      <button class="add-to-cart green-button">Add to Cart</button>
+    </div>
+  </section>
 
-<section class="game-synopsis">
-  <h2><%= game.escape('title') %></h2>
-  <p>
-    <%= game.escape('synopsis') %>
-  </p>
-  <ul class="tags">
-    <% game.tags().each( function(tag) { %>
-      <li class="tag">
-        <%= tag.get('name') %>
-      </li>
-    <% }) %>
-  </ul>
-</section>
 
-<section class="game-description">
-  <h2>Description</h2>
-  <p>
-    <%= game.escape('description') %>
-  </p>
-</section>
 
-<section class="author-ship">
-  Game by <%= game.author().escape('username') %>
-</section>
+  <section class="game-description">
+    <h2 class="blue-h">Description</h2>
+    <p>
+      <%= game.escape('description') %>
+    </p>
+  </section>
+  <a href="#">Back To Index</a>
 
-<a href="#">Back To Index</a>
+</article>
+
+<article class="game-sidebar">
+  <section class="authorship block">
+    Game by <%= game.author().escape('username') %>
+  </section>
+</article>

@@ -1,0 +1,37 @@
+nav {
+  width: 900px;
+  margin: 0 auto;
+  color: #ddd;
+  padding: 20px;
+}
+
+.page-title {
+  float: left;
+  font-size: 26px;
+}
+
+.main-links {
+  float: left;
+}
+
+.main-link {
+  float: left;
+  padding: 10px 20px;
+}
+
+.user-nav {
+  float: right;
+}
+
+.user-nav li {
+  float: left;
+}
+
+.user-nav button, .user-nav a {
+  padding: 10px 20px;
+  display: block;
+}
+
+.user-nav button:hover, a:hover {
+  color: #fff;
+}

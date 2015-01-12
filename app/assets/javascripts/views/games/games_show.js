@@ -16,7 +16,7 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
 
   events: {
     'click .add-screenshot': 'screenshotForm',
-    'click .game-buy': 'addToCart'
+    'click .add-to-cart': 'addToCart'
   },
 
   screenshotForm: function (event) {
