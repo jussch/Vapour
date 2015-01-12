@@ -5,7 +5,7 @@
 // RESET
 
 html, header, body, h1, h2, ul, li, a, div, main, section,
-article, nav, button, label, input, strong, textarea {
+article, nav, button, label, input, strong, textarea, figure {
   border: 0;
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ article, nav, button, label, input, strong, textarea {
   background: transparent;
   color: inherit;
   text-decoration: inherit;
-  cursor: default;
+  cursor: inherit;
   outline: inherit;
 }
 
@@ -32,8 +32,6 @@ ul {
   display: block;
 }
 
-// Header
-
 body {
   font-family: sans-serif;
   font-size: 16px;
@@ -46,6 +44,10 @@ button, a {
 
 #header {
   background-color: #171A21;
+}
+
+img {
+  height: 100%;
 }
 
 

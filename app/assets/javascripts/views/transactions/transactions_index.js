@@ -36,7 +36,7 @@ Vapour.Views.TransactionsIndex = Backbone.CompositeView.extend({
       success: function (resp) {
         this.collection.reset( [], { user: this.collection.user } );
         Backbone.history.navigate("users/"+this.collection.user.id, { trigger: true });
-        this.remove();
+        Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
       errors: function (resp) {
         this.errors = resp.responseJSON.errors;

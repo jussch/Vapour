@@ -16,6 +16,8 @@
 //= require backbone
 //= require vapour
 //= require_tree ../templates
+//= require jquery-ui
+//= require jquery.serializejson
 //= require_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections

@@ -9,13 +9,23 @@
 
 <article class="game-head block group">
   <section class="game-screenshots">
+    <figure class="screenshot-display"></figure>
     <ul class="game-screenshot-list group">
       <% game.screenshots().each( function(screenshot){ %>
-        <li class="screenshot">
-          <img src="<%= screenshot.get('image_url') %>" alt="" />
+        <li class="game-screenshot">
+          <figure class="screenshot-thumb">
+            <img src="<%= screenshot.get('image_url') %>" alt="" />
+          </figure>
         </li>
       <% }) %>
     </ul>
+    <div class="screenshot-slider group">
+      <button class="slide-left">&larr;</button>
+      <div class="slider-bar-container">
+        <div class="slider-bar"></div>
+      </div>
+      <button class="slide-right">&rarr;</button>
+    </div>
   </section>
 
   <section class="game-synopsis">

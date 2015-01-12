@@ -7,9 +7,10 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this.games = options.games;
 
     var header = new Vapour.Views.HeaderMain();
-    this.$headerEl.html(header.render().$el)
+    this.$headerEl.html(header.render().$el);
 
-    this.listenTo(this, 'swapModal', this.swapModal)
+    this.listenTo(this, 'swapModal', this.swapModal);
+    this.listenTo(this, 'removeModal', this.removeModal);
   },
 
   routes: {
@@ -60,8 +61,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
-    this._currentModal && this._currentModal.remove();
-    this.$modalEl.addClass('hidden');
+    this.removeModal();
   },
 
   swapModal: function (modal) {
@@ -69,5 +69,10 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this._currentModal = modal;
     this.$modalEl.html(modal.render().$el);
     this.$modalEl.removeClass('hidden');
+  },
+
+  removeModal: function () {
+    this._currentModal && this._currentModal.remove();
+    this.$modalEl.addClass('hidden');
   }
 });

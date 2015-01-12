@@ -15,6 +15,94 @@
 .game-screenshots {
   width: 500px;
   margin-right: 50px;
+  overflow: hidden;
+}
+
+.screenshot-display {
+  height: 288px;
+  width: 512px;
+  background-color: #000;
+  box-sizing: border-box;
+  border: 2px solid #000;
+  margin-bottom: 5px;
+}
+
+.game-screenshot-list {
+  overflow-x: auto;
+  padding-top: 12px;
+  height: 72px;
+  position: relative;
+  left: 0;
+}
+
+.screenshot-thumb {
+  float: left;
+  width: 95px;
+  height: 60px;
+  margin-right: 5px;
+  box-sizing: border-box;
+  border: 2px solid #000;
+  background: #000;
+  cursor: pointer;
+  position: relative;
+}
+
+.screenshot-thumb.active {
+  border: 2px solid #bbb;
+}
+
+.screenshot-thumb.active:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: -14px;
+  z-index: 4;
+  transform: translateX(-50%);
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  border-bottom: 12px solid #bbb;
+}
+
+.screenshot-thumb img, .screenshot-display img {
+  display: block;
+  margin: auto;
+}
+
+.screenshot-slider {
+  height: 20px;
+  overflow: hidden;
+}
+
+.screenshot-slider > * {
+  float: left;
+}
+
+.slide-left, .slide-right {
+  padding: 1px 0;
+  width: 40px;
+  height: 100%;
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.slider-bar-container {
+  position: relative;
+  width: 420px;
+  background: #ddd;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.slider-bar {
+  position: absolute;
+  width: 80px;
+  height: 100%;
+  background: #000;
+  cursor: pointer;
+  border-radius: 5px;
+  left: 0;
 }
 
 .game-synopsis {
@@ -44,7 +132,7 @@
   background: linear-gradient(to right, #333, #567);
   position: relative;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   box-shadow: 1px 1px 5px #171A21;
 }
 

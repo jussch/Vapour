@@ -26,7 +26,7 @@ Vapour.Views.UsersForm = Backbone.CompositeView.extend({
     this.model.save(data, {
       success: function(model, resp) {
         Vapour.CurrentUser().set(resp);
-        this.remove();
+        Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
       error: function(model, resp) {
         this.errors = resp.responseJSON.errors;
