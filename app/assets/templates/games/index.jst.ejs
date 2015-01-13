@@ -1,13 +1,22 @@
 <h1>Game Store</h1>
 
-<a href="#games/new" class="new-game">Submit a New Game!</a>
+<header class="game-store-header group">
+  <ul class="game-store-header-items group">
+    <li>
+      <a href="#game/search" class="tag-pulldown">Games</a>
+      <ul class="hidden tag-pulldown-items">
+        <li>Roleplaying</li>
+      </ul>
+    </li>
+    <li>
+      <a href="#games/new" class="new-game">Submit Your Game!</a>
+    </li>
+  </ul>
+
+  <input type="search" name="game_search" class="search-bar" placeholder="Search">
+</header>
+
+
 
 <ul class="game-list group">
-  <% games.each(function (game) { %>
-    <li class="game-item-list">
-      <a href="#games/<%= game.get('id') %>" class="game-item-link">
-        <%= game.escape('title') %>
-      </a>
-    </li>
-  <% }) %>
 </ul>

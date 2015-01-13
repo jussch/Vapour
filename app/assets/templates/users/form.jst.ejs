@@ -1,31 +1,33 @@
-<h1>Create A Vapour Account</h1>
+<h1 class="user-title">Create A Vapour Account</h1>
 
-<ul class="errors">
-  <% if (errors) { %>
+<% if (errors) { %>
+  <ul class="errors user-errors">
     <% errors.forEach(function (error) { %>
       <li><%= error %></li>
     <% }) %>
-  <% } %>
-</ul>
+  </ul>
+<% } %>
 
 
-<form class="sign-up-form" method="post">
+<form class="sign-up-form user-form" method="post">
 
-  <label>
-    Username
+  <label class="input-label">
+    <strong class="input-name">Username</strong>
     <input type="text" name="user[username]" value="<%= user.get('username') %>">
   </label>
 
-  <label>
-    Password
+  <label class="input-label">
+    <strong class="input-name">Password</strong>
     <input type="password" name="user[password]" value="">
   </label>
 
-  <label>
-    Email
+  <label class="input-label">
+    <strong class="input-name">Email</strong>
     <input type="text" name="user[email]" value="<%= user.get('email') %>">
   </label>
 
-  <input type="submit" name="Submit">
+  <input type="submit" class="blue-button" name="Submit">
 
 </form>
+
+<button class="close-modal">&times;</button>

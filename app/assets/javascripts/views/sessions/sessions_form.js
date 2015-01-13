@@ -14,7 +14,8 @@ Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .sign-in-form': 'createSession'
+    'submit .sign-in-form': 'createSession',
+    'click .close-modal': 'close'
   },
 
   createSession: function (event) {
@@ -33,6 +34,11 @@ Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
         this.render();
       }.bind(this)
     });
+  },
+
+  close: function (event) {
+    event.preventDefault();
+    Vapour.RootRouter.trigger('removeModal');
   }
 
 });

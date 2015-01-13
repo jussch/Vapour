@@ -1,41 +1,43 @@
+<h1>Create a New Game</h1>
+
 <form class="game-form" method="post">
 
-  <ul class="errors">
-    <% if (errors) { %>
+  <% if (errors) { %>
+    <ul class="errors game-errors">
       <% errors.forEach(function (error) { %>
         <li><%= error %></li>
       <% }) %>
-    <% } %>
-  </ul>
+    </ul>
+  <% } %>
 
 
-  <label>
-    Title
+  <label class="input-label">
+    <strong class="input-name">Title</strong>
     <input type="text" name="game[title]" value="<%= game.get('title') %>" class="title">
   </label>
 
-  <label>
-    Synopsis
+  <label class="input-label">
+    <strong class="input-name">Synopsis</strong>
     <textarea name="game[synopsis]" rows="8" cols="40" class="synopsis"
     ><%= game.get('synopsis') %></textarea>
   </label>
 
-  <label>
-    Description
+  <label class="input-label">
+    <strong class="input-name">Description</strong>
     <textarea name="game[description]" rows="12" cols="40" class="description"
     ><%= game.get('description') %></textarea>
   </label>
 
-  <label>
-    Price
+  <label class="input-label">
+    <strong class="input-name">Price</strong>
     <input type="number" name="game[price]" value="<%= game.get('price') %>"
-    min="0" max="9999" step="0.01" class="price">
+    min="0" max="9999" step="0.01">
   </label>
 
   <input type="hidden" name="game[tag_ids][]" value="">
-  <section class="tag-selection">
+  <section class="tag-selection group">
     <% tags.each(function(tag) { %>
-    <label>
+    <label class="tag-input">
       <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
       <%= game.checkIfTagsInclude(tag) %> >
       <%= tag.get('name') %>
@@ -43,6 +45,6 @@
     <% }); %>
   </section>
 
-  <input type="submit" name="Submit" class="submit">
+  <input type="submit" name="Submit" class="submit blue-button">
 
 </form>

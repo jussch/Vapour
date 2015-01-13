@@ -9,7 +9,7 @@ class Api::ScreenshotsController < Api::BaseController
     if @screenshot.save
       render json: @screenshot
     else
-      render json: @screenshot.errors.full_messages
+      render json: {errors: @screenshot.errors.full_messages}
     end
   end
 

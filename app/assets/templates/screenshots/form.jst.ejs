@@ -11,11 +11,13 @@
 
 <form class="screenshot-form" method="post">
 
-  <label>
-    URL
+  <label class="input-label">
+    <strong class="input-name">URL</strong>
     <input type="text" name="screenshot[image_url]" value="<%= screenshot.get('image_url') %>">
   </label>
 
-  <input type="submit" name="Submit">
+  <input type="submit" name="Submit" class="blue-button">
 
 </form>
+
+<button class="close-modal">&times;</button>

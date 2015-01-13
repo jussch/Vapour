@@ -1,7 +1,7 @@
 class Api::GamesController < Api::BaseController
 
   before_action :ensure_correct_author, only: [:update, :destroy]
-  before_action :require_signed_in!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :api_require_signed_in!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @games = Game.all
@@ -16,7 +16,7 @@ class Api::GamesController < Api::BaseController
     if @game.save
       render json: @game
     else
-      render json: @game.errors.full_messages, status: :unprocessable_entity
+      render json: {errors: @game.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -24,13 +24,18 @@ class Api::GamesController < Api::BaseController
     if @game.update(game_params)
       render json: @game
     else
-      render json: @game.errors.full_messages, status: :unprocessable_entity
+      render json: {errors: @game.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   def destroy
     @game.destroy
     render json: @game
+  end
+
+  def search
+    @games = Game.search_by_title(params[:query])
+    render :index
   end
 
   private

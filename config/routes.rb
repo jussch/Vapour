@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       post 'add_funds', on: :member
     end
     resource :sessions, only: [:create, :destroy]
-    resources :games, only: [:show, :index, :create, :destroy, :update]
+    resources :games, only: [:show, :index, :create, :destroy, :update] do
+      get 'search', on: :collection
+    end
     resources :screenshots, only: [:show, :create, :destroy]
     resources :tags, only: [:index]
     resources :transactions, only: [:index, :destroy, :create] do

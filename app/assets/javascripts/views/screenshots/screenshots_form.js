@@ -19,7 +19,8 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .screenshot-form': 'createScreenshot'
+    'submit .screenshot-form': 'createScreenshot',
+    'click .close-modal': 'close'
   },
 
   createScreenshot: function (event) {
@@ -39,6 +40,11 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
         this.render()
       }.bind(this)
     });
+  },
+
+  close: function (event) {
+    event.preventDefault();
+    Vapour.RootRouter.trigger('removeModal');
   }
 
 });

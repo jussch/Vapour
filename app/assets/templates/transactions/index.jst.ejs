@@ -1,20 +1,30 @@
+
 <h1 class="cart-title">Cart</h1>
 
-<ul class="errors">
-  <% if (errors) { %>
+<% if (errors) { %>
+  <ul class="errors cart-errors">
     <% errors.forEach(function (error) { %>
       <li><%= error %></li>
     <% }) %>
-  <% } %>
-</ul>
+  </ul>
+<% } %>
 
 <% if (transactions.totalPrice() !== "0.00") { %>
   <ul class="cart-list">
   </ul>
 
-  Total: <strong class="price">$<%= transactions.totalPrice() %></strong>
+  <div class="cart-total-box">
+    <div class="cart-total">
+      Total:
+      <strong class="cart-price">$<%= transactions.totalPrice() %></strong>
+    </div>
 
-  <button class="checkout">Checkout</button>
+    <button class="checkout green-button">Checkout</button>
+  </div>
+
 <% } else { %>
-  Nothing is in your Cart
+
+  <strong class="notice">Nothing is in your Cart</strong>
 <% } %>
+
+<button class="close-modal">&times;</button>

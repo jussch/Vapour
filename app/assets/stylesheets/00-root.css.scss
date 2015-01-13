@@ -82,14 +82,29 @@ img {
   background: linear-gradient(to top, #51941B, #5FAD1F);
 }
 
-// Errors
+// Displays
 
-.errors li {
+.errors li, .error {
   display: inline-block;
   color: #ddd;
   background: linear-gradient(to top right, #8C2919, #AB3320);
   padding: 10px 20px;
   margin: 5px 0;
+  border: 1px solid #AD4E3E;
+}
+
+.notices li, .notice {
+  display: inline-block;
+  color: #ddd;
+  background: linear-gradient(to top right, #19498C, #205AAB);
+  padding: 10px 20px;
+  margin: 5px 0;
+  border: 1px solid #598ACF;
+}
+
+.errors li:after, .notices li:after {
+  content: "";
+  display: block;
 }
 
 // Body
@@ -106,6 +121,30 @@ img {
   margin: 20px 0;
 }
 
+// Typical Form
+
+.input-label {
+  display: block;
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.input-name {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-label input, .input-label textarea {
+  display: block;
+  background: #2A405B;
+  border: 1px solid #000;
+  box-shadow: 1px 1px #45556D;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+
 
 // Modal
 
@@ -119,6 +158,7 @@ img {
   border: 2px solid #444;
   box-shadow: 3px 3px 8px black;
   padding: 20px;
+  -webkit-transition: 1s;
 }
 
 .hidden {

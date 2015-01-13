@@ -1,6 +1,6 @@
-class Api::TransactionsController < ApplicationController
+class Api::TransactionsController < Api::BaseController
 
-  before_action :require_signed_in!
+  before_action :api_require_signed_in!
 
   def index #cart
     @transactions = current_user.pending_transactions.includes(:game)
@@ -11,7 +11,7 @@ class Api::TransactionsController < ApplicationController
     if @transaction.save
       render :show
     else
-      render json: {errors: @transaction.errors.full_messages},
+      render json: {errors: ["You already own this game!"]},
         status: :unprocessable_entity
     end
   end
@@ -26,7 +26,7 @@ class Api::TransactionsController < ApplicationController
     if checkout_transactions
       render json: {notices: ["The games have been added to your library"]}
     else
-      render json: {errors: ["Not enough Funds, please add more funds to your account"]},
+      render json: {errors: ["Not enough Funds: please make more money."]},
         status: :unprocessable_entity
     end
   end

@@ -35,6 +35,7 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
         Backbone.history.navigate('games/'+this.model.id, { trigger: true });
       }.bind(this),
       error: function(model, resp) {
+        console.log(resp);
         this.errors = resp.responseJSON.errors;
         this.render()
       }.bind(this)

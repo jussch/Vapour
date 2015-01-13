@@ -9,7 +9,7 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({ game: this.model });
+    var content = this.template({ game: this.model, errors: this.errors });
     this.$el.html(content);
 
     this.setupScreenshots();
@@ -70,8 +70,18 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
         Vapour.RootRouter.trigger("swapModal", view);
       },
       error: function (model, resp) {
-        this.errors = resp.responseJSON.errors;
-        this.render();
+        var json = resp.responseJSON;
+        if (json.type && json.type === "user_auth")  {
+          var session = new Vapour.Models.Session();
+          var view = new Vapour.Views.SessionsForm({ model: session });
+          view.errors = json.errors;
+          Vapour.RootRouter.trigger('swapModal', view);
+        } else {
+          var collection = Vapour.CurrentUser().gamesInCart();
+          var view = new Vapour.Views.TransactionsIndex({collection: collection});
+          view.errors = json.errors;
+          Vapour.RootRouter.trigger("swapModal", view);
+        }
       }.bind(this)
     });
   },

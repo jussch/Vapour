@@ -51,3 +51,5 @@ gem 'faker'
 gem 'rails_12factor',  group: :production
 
 gem 'backbone-on-rails'
+
+gem 'pg_search'

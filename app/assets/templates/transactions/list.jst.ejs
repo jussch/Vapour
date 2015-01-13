@@ -1,3 +1,8 @@
-<%= transaction.game().escape('title') %> -
-<strong class="price">$<%= transaction.game().get('price') %></strong>
-<button class="cart-delete">Remove</button>
+<div class="cart-game-title">
+  <%= transaction.game().escape('title') %>
+</div>
+
+<div class="cart-game-price">
+  <strong class="cart-price">$<%= transaction.game().get('price') %></strong>
+  <button class="cart-delete">Remove</button>
+</div>

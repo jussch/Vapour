@@ -1,0 +1,21 @@
+.user-title {
+  font-size: 24px;
+}
+
+.user-errors:after, .user-title:after {
+  content: "";
+  background: #999;
+  height: 1px;
+  left: 0px;
+  right: 0;
+  display: block;
+  margin-top: 10px;
+}
+
+.user-errors {
+  margin-top: 10px;
+}
+
+.user-form {
+  margin-top: 10px;
+}

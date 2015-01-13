@@ -14,7 +14,8 @@ Vapour.Views.UsersForm = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .sign-up-form': 'createUser'
+    'submit .sign-up-form': 'createUser',
+    'click .close-modal': 'close'
   },
 
   createUser: function (event) {
@@ -33,6 +34,11 @@ Vapour.Views.UsersForm = Backbone.CompositeView.extend({
         this.render();
       }.bind(this)
     });
+  },
+
+  close: function (event) {
+    event.preventDefault();
+    Vapour.RootRouter.trigger('removeModal');
   }
 
 });

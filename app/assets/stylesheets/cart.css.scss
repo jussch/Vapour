@@ -1,13 +1,67 @@
 .cart-title {
   font-size: 24px;
-  margin-bottom: 10px;
 }
 
-.cart-title:after {
+.cart-errors:after, .cart-title:after {
   content: "";
   background: #999;
   height: 1px;
-  left: 0;
+  left: 0px;
   right: 0;
   display: block;
+  margin-top: 10px;
+}
+
+.cart-errors {
+  margin-top: 10px;
+}
+
+.cart-list {
+  margin-top: 10px;
+}
+
+.cart-item {
+  margin: 10px 0;
+  width: 400px;
+  padding: 10px 20px 20px 0px;;
+  border-bottom: 1px solid #999;
+}
+
+.cart-game-title {
+  float: left;
+}
+
+.cart-game-price {
+  float: right;
+  position: relative;
+}
+
+.cart-delete {
+  position: absolute;
+  color: rgba(103, 193, 245, 0.5);
+  font-size: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -18px;
+}
+
+.cart-delete:hover {
+  color: #67c1f5;
+}
+
+.cart-total-box {
+  float: right;
+  padding: 5px;
+}
+
+.cart-total {
+  display: inline;
+  margin-bottom: 5px
+}
+
+.cart-price {
+  color: #aaa;
+  background: #000;
+  border-radius: 5px;
+  padding: 5px 5px;
 }

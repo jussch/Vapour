@@ -24,7 +24,8 @@ Vapour.Views.TransactionsIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    'click .checkout': 'checkout'
+    'click .checkout': 'checkout',
+    'click .close-modal': 'close'
   },
 
   checkout: function (event) {
@@ -38,11 +39,16 @@ Vapour.Views.TransactionsIndex = Backbone.CompositeView.extend({
         Backbone.history.navigate("users/"+this.collection.user.id, { trigger: true });
         Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
-      errors: function (resp) {
+      error: function (resp) {
         this.errors = resp.responseJSON.errors;
         this.render();
       }.bind(this)
     });
+  },
+
+  close: function (event) {
+    event.preventDefault();
+    Vapour.RootRouter.trigger('removeModal');
   }
 
 });
