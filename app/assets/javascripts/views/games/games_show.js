@@ -36,7 +36,6 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
         that.$screenshots.css('left', "-"+((xPos - parentXPos) / 340 * extraX)+"px");
       }
     });
-    console.log(this.$sliderBar);
   },
 
   events: {
@@ -67,8 +66,8 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
       success: function (model) {
         var collection = Vapour.CurrentUser().gamesInCart();
         collection.add(transaction);
-        var view = new Vapour.Views.TransactionsIndex({collection: collection})
-        Vapour.RootRouter.trigger("swapModal", view)
+        var view = new Vapour.Views.TransactionsIndex({collection: collection});
+        Vapour.RootRouter.trigger("swapModal", view);
       },
       error: function (model, resp) {
         this.errors = resp.responseJSON.errors;
@@ -93,13 +92,25 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
   slideLeft: function (event) {
     event.preventDefault();
     var prevChild = this.$activeThumb.parent().prev().children('.screenshot-thumb');
-    prevChild && this.activate(prevChild);
+    prevChild.length && this.activate(prevChild);
+
+    var index = this.$activeThumb.parent().index('li');
+    var newLeft = Math.min((index - 4) * -100,0)
+    newLeft = Math.max((newLeft), -this.$screenshots.data('extra-width'));
+    this.$screenshots.css('left', newLeft);
+    this.$sliderBar.css('left', -newLeft / this.$screenshots.data('extra-width') * 340);
   },
 
   slideRight: function (event) {
     event.preventDefault();
     var nextChild = this.$activeThumb.parent().next().children('.screenshot-thumb');
-    nextChild && this.activate(nextChild);
+    nextChild.length && this.activate(nextChild);
+
+    var index = this.$activeThumb.parent().index('li');
+    var newLeft = Math.min((8 - index) * 100,0)
+    newLeft = Math.max((newLeft), -this.$screenshots.data('extra-width'));
+    this.$screenshots.css('left', newLeft);
+    this.$sliderBar.css('left', -newLeft / this.$screenshots.data('extra-width') * 340);
   }
 
 });

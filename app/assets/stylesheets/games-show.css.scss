@@ -83,14 +83,15 @@
   width: 40px;
   height: 100%;
   text-align: center;
-  background: #fff;
+  background: #123;
   border-radius: 5px;
+  color: #48a
 }
 
 .slider-bar-container {
   position: relative;
   width: 420px;
-  background: #ddd;
+  background: #080b14;
   height: 100%;
   border-radius: 5px;
 }
@@ -99,10 +100,15 @@
   position: absolute;
   width: 80px;
   height: 100%;
-  background: #000;
+  background: #123;
   cursor: pointer;
   border-radius: 5px;
   left: 0;
+}
+
+.slide-left:hover, .slide-right:hover, .slider-bar:hover {
+  color: #eee;
+  background: linear-gradient(to right, #2E516B, #315977);
 }
 
 .game-synopsis {

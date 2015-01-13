@@ -11,8 +11,8 @@
   <section class="game-screenshots">
     <figure class="screenshot-display"></figure>
     <ul class="game-screenshot-list group">
-      <% game.screenshots().each( function(screenshot){ %>
-        <li class="game-screenshot">
+      <% game.screenshots().each( function(screenshot, index){ %>
+        <li class="game-screenshot" data-ord="<%= index %>">
           <figure class="screenshot-thumb">
             <img src="<%= screenshot.get('image_url') %>" alt="" />
           </figure>
