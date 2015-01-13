@@ -178,11 +178,12 @@
   background: rgba(102, 195, 245, 0.2);
   margin-right: 5px;
   margin-bottom: 5px;
+  border-radius: 5px;
 }
 
-.tag > * {
-  padding: 0px 7px;
-  border-radius: 5px;
+.tag-name {
+  display: block;
+  padding: 2px 7px;
 }
 
 h2 {

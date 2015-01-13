@@ -82,12 +82,23 @@ img {
   background: linear-gradient(to top, #51941B, #5FAD1F);
 }
 
+// Errors
+
+.errors li {
+  display: inline-block;
+  color: #ddd;
+  background: linear-gradient(to top right, #8C2919, #AB3320);
+  padding: 10px 20px;
+  margin: 5px 0;
+}
+
 // Body
 
 #content {
   color: #ddd;
   width: 900px;
   margin: 0 auto;
+  padding-bottom: 200px;
 }
 
 #content h1 {
@@ -100,10 +111,12 @@ img {
 
 #modal {
   position: fixed;
+  color: #eee;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #34598C;
+  background-color: #262626;
+  border: 2px solid #444;
   box-shadow: 3px 3px 8px black;
   padding: 20px;
 }

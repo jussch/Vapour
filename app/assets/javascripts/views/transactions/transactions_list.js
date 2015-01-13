@@ -3,6 +3,7 @@ Vapour.Views.TransactionsList = Backbone.CompositeView.extend({
   template: JST['transactions/list'],
 
   tagName: "li",
+  className: "cart-item"
 
   initialize: function (options) {
     this.listenTo(this.model, "sync change", this.render);
