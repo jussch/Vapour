@@ -35,7 +35,7 @@
     <ul class="tags group">
       <% game.tags().each( function(tag) { %>
         <li class="tag">
-          <a href="#" class="tag-name"><%= tag.get('name') %></a>
+          <a href="#games/search/<%= tag.id %>" class="tag-name"><%= tag.get('name') %></a>
         </li>
       <% }) %>
     </ul>

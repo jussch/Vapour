@@ -17,7 +17,24 @@ class User < ActiveRecord::Base
     -> {where status: "PENDING"},
     class_name: "Transaction",
     dependent: :destroy
-    
+
+  has_many :sent_requests,
+    -> {where status: "REQUESTED"},
+    dependent: :destroy,
+    class_name: "Friendship",
+    foreign_key: :sender_id
+  has_many :recieved_requests,
+    -> {where status: "PENDING"},
+    dependent: :destroy,
+    class_name: "Friendship",
+    foreign_key: :sender_id
+  has_many :completed_friendships,
+    -> {where status: "APPROVED"},
+    dependent: :destroy,
+    class_name: "Friendship",
+    foreign_key: :sender_id
+  has_many :friends, through: :completed_friendships, source: :reciever
+
   has_many :games, through: :transactions, source: :game
   has_many :bought_games, through: :complete_transactions, source: :game
   has_many :games_in_cart, through: :pending_transactions, source: :game

@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108153550) do
+ActiveRecord::Schema.define(version: 20150114205225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", force: true do |t|
+    t.integer  "sender_id",   null: false
+    t.integer  "reciever_id", null: false
+    t.string   "status",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "inverse_id"
+  end
+
+  add_index "friendships", ["inverse_id"], name: "index_friendships_on_inverse_id", using: :btree
+  add_index "friendships", ["reciever_id"], name: "index_friendships_on_reciever_id", using: :btree
+  add_index "friendships", ["sender_id"], name: "index_friendships_on_sender_id", using: :btree
 
   create_table "games", force: true do |t|
     t.string   "title",                               null: false

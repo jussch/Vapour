@@ -8,6 +8,8 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     this.listenTo(Vapour.Tags, "sync", this.render);
     this.query = options.query;
     this.searchTags = options.searchTags || [];
+    this.page = 0;
+    this.perPage = 10;
   },
 
   update: function () {
@@ -28,7 +30,9 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
   },
 
   events: {
-    'change .tag-sort-input': 'filterSearch'
+    'change .tag-sort-input': 'filterSearch',
+    'click .nav-left': 'prevPage',
+    'click .nav-right': 'nextPage'
   },
 
   filterSearch: function (event) {
@@ -50,10 +54,27 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     this.populateGames();
   },
 
+  prevPage: function (event) {
+    event.preventDefault();
+    if (this.page <= 0) {return;}
+    this.page -= 1;
+    this.populateGames();
+  },
+
+  nextPage: function (event) {
+    event.preventDefault();
+    if (this.page >= Math.floor(this.collection.length / this.perPage)) {return;}
+    this.page += 1;
+    this.populateGames();
+  },
+
   populateGames: function () {
     var $gameList = this.$('.game-sorted-list')
     $gameList.empty();
-    this.collection.each(function (model) {
+    var sliceStart = this.page * this.perPage;
+    var sliceEnd = (this.page + 1) * this.perPage;
+    var gamesOnPage = this.collection.slice(sliceStart, sliceEnd)
+    gamesOnPage.forEach(function (model) {
       var view = new Vapour.Views.GameList({model: model})
       this.addSubview($gameList, view);
     }.bind(this))

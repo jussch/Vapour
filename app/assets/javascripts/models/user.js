@@ -23,17 +23,59 @@ Vapour.Models.User = Backbone.Model.extend({
     return this._gamesInCart;
   },
 
+  friends: function() {
+    if (!this._friends) {
+      this._friends = new Vapour.Collections.Users();
+    }
+
+    return this._friends;
+  },
+
+  friends: function() {
+    if (!this._friends) {
+      this._friends = new Vapour.Collections.Users();
+    }
+
+    return this._friends;
+  },
+
+  recievedRequests: function() {
+    if (!this._recievedRequests) {
+      this._recievedRequests = new Vapour.Collections.Friendships([],{
+        user: this
+      });
+    }
+
+    return this._recievedRequests;
+  },
+  
+  sentRequests: function() {
+    if (!this._sentRequests) {
+      this._sentRequests = new Vapour.Collections.Friendships([],{
+        user: this
+      });
+    }
+
+    return this._sentRequests;
+  },
+
+  parseSetup: {
+    "bought_games": "boughtGames",
+    "games_in_cart": "gamesInCart",
+    "friends": "friends",
+    "recieved_requests": "recievedRequests",
+    "sent_requests": "sentRequests"
+  },
+
   parse: function (resp) {
-    if (resp.bought_games) {
-      this.boughtGames().set(resp.bought_games, { parse: true });
-      delete resp.bought_games;
+    var respAttr, funcAttr;
+    for (var respAttr in this.parseSetup) {
+      funcAttr = this.parseSetup[respAttr]
+      if (resp[respAttr]) {
+        this.[funcAttr]().set(resp[respAttr], { parse: true});
+        delete resp[respAttr];
+      }
     }
-
-    if (resp.games_in_cart) {
-      this.gamesInCart().set(resp.games_in_cart, { parse: true });
-      delete resp.gamesInCart;
-    }
-
     return resp;
   }
 

@@ -17,7 +17,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
     "": "gameIndex",
     "games": "gameIndex",
     "games/new": "gameNew",
-    "games/search": "gameSort",
+    "games/search(/:tag_id)": "gameSort",
     "games/:id": "gameShow",
     "games/:id/edit": "gameEdit",
     "users": "userIndex",
@@ -35,10 +35,16 @@ Vapour.Routers.Root = Backbone.Router.extend({
     this.swapView(view);
   },
 
-  gameSort: function () {
+  gameSort: function (tag_id) {
     var query = this.games.searchQuery;
+    var tags = this.games.searchTags;
+    if (tag_id) {tags.push(parseInt(tag_id))}
     var sortedGames = this.games.search();
-    var view = new Vapour.Views.GamesSort({ collection: sortedGames, query: query });
+    var view = new Vapour.Views.GamesSort({
+      collection: sortedGames,
+      query: query,
+      searchTags: tags
+    });
     this.swapView(view);
   },
 

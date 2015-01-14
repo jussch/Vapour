@@ -27,5 +27,8 @@ Rails.application.routes.draw do
     resources :transactions, only: [:index, :destroy, :create] do
       post 'complete', on: :collection
     end
+    resources :friendship, only: [:create, :destroy] do
+      post 'approve', on: :member
+    end
   end
 end
