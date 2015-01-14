@@ -1,6 +1,6 @@
 Vapour.Views.GameList = Backbone.CompositeView.extend({
 
-  template: JST['games/list'],
+  template: JST['games/_list'],
 
   tagName: 'li',
   className: 'game-item',

@@ -1,0 +1,31 @@
+<div class="games-header">
+
+</div>
+
+<h1>Browse</h1>
+
+<% if (search) { %>
+  <h2>Searching with "<%= search %>"</h2>
+<% } %>
+
+<ul class="game-sorted-list group">
+</ul>
+
+<section class="block">
+  <h2 class="tags-title">Filter by Tags</h2>
+  <ul class="sort-tags-list">
+    <% Vapour.Tags.each (function (tag) { %>
+      <li>
+        <label class="tag-sort-toggle">
+          <input type="checkbox" name="tags_checked[]"
+            value="<%= tag.id %>" class="tag-sort-input"
+            <% if (checkedTags.indexOf(tag.id) >= 0) { %>
+              checked
+            <% } %>
+            >
+          <%= tag.escape('name') %>
+        </label>
+      </li>
+    <% }) %>
+  </ul>
+</section>

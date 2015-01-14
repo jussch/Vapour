@@ -2,8 +2,11 @@ Vapour
 ======
 
 ###Immediate TODOs:
-  - Magic Wrapping Fix.
-  - Edit + New Screenshot + User Auth for those in Games.
+  - Game Search, Search by Tag
+  - Friends / Profiles+
+
+##Questions:
+  - Do I use Kaminari? If not, remove GEM.
 
 ###MVP Todo List:
   - Homepage
