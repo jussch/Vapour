@@ -12,7 +12,7 @@ Vapour.Views.FriendshipsForm = Backbone.ExtendedView.extend({
       user: this.model
     })
     this.$el.html(content);
-    this.addUserThumbs();
+    // this.addUserThumbs(); // IGNORE BECAUSE USER's SHOW HANDDLES THIS.
     return this
   },
 
@@ -46,11 +46,11 @@ Vapour.Views.FriendshipsForm = Backbone.ExtendedView.extend({
     id = parseInt($target.parent().data('req-id'));
 
     $.ajax({
-      url: "/api/friendships/"+id+"/destroy",
+      url: "/api/friendships/"+id,
       type: 'DELETE',
       dataType: 'json',
       success: function (resp) {
-        // this.model.fetch();
+        this.model.fetch();
       }.bind(this)
     });
   }

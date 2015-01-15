@@ -1,5 +1,7 @@
-<% if (currUser.sentRequests().pluck('id').indexOf(user.id) >= 0) { %>
+<% if (currUser.sentRequests().pluck('reciever_id').indexOf(user.id) >= 0) { %>
   <button class="blue-button" disabled>Request Sent</button>
-<% } else { %>
+<% } else if (currUser.recievedRequests().pluck('reciever_id').indexOf(user.id) >= 0) { %>
+  <a href="#users/<%= currUser.id %>" class="blue-button">Reply To Friend Request</a>
+<% } else if (currUser.friends().pluck('id').indexOf(user.id) < 0) { %>
   <button class="blue-button send-request">Send Friend Request</button>
 <% } %>

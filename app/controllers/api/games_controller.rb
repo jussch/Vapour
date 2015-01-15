@@ -4,7 +4,7 @@ class Api::GamesController < Api::BaseController
   before_action :api_require_signed_in!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @games = Game.all
+    @games = Game.all.includes(:tags)
   end
 
   def show
@@ -34,7 +34,7 @@ class Api::GamesController < Api::BaseController
   end
 
   def search
-    @games = Game.search_by_title(params[:query])
+    @games = Game.search_by_title(params[:query]).includes(:tags)
     render :index
   end
 

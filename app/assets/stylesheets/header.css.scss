@@ -14,9 +14,13 @@ nav {
   float: left;
 }
 
-.main-link {
+.main-links li {
   float: left;
+}
+
+.main-link {
   padding: 10px 20px;
+  display: block;
 }
 
 .user-nav {

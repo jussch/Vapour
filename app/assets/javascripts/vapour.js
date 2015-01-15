@@ -22,7 +22,7 @@ window.Vapour = {
       url: "/api/users/current",
       dataType: 'json',
       success: function (resp) {
-        Vapour.CurrentUser().set(resp);
+        Vapour.CurrentUser().set(Vapour.CurrentUser().parse(resp));
       }
     });
     Backbone.history.start();

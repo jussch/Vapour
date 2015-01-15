@@ -2,8 +2,8 @@
 
 <ul class="pending-friend-requests block">
   <% user.recievedRequests().each(function (userReq) { %>
-    <li data-req-id="<%= userReq.id %>" data-user-id="<%= userReq.reciever_id %>">
-      <div class="user-thumb" data-id="<%= userReq.id %>" data-display-name="true"></div>
+    <li data-req-id="<%= userReq.id %>" data-user-id="<%= userReq.get('reciever_id') %>">
+      <div class="user-thumb" data-id="<%= userReq.get('reciever_id') %>" data-display-name="true"></div>
       <button class="accept-request">Accept</button>
       <button class="ignore-request">Ignore</button>
     </li>

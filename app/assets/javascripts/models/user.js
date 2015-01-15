@@ -61,7 +61,7 @@ Vapour.Models.User = Backbone.Model.extend({
 
   parse: function (resp) {
     var respAttr, funcAttr;
-    for (var respAttr in this.parseSetup) {
+    for (respAttr in this.parseSetup) {
       if (resp[respAttr]) {
         funcAttr = this.parseSetup[respAttr]
         this[funcAttr]().set(resp[respAttr], { parse: true});

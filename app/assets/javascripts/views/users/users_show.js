@@ -1,4 +1,4 @@
-Vapour.Views.UserShow = Backbone.CompositeView.extend({
+Vapour.Views.UserShow = Backbone.ExtendedView.extend({
 
   template: JST['users/show'],
 
@@ -11,6 +11,7 @@ Vapour.Views.UserShow = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.appendFriendshipForms();
+    this.addUserThumbs();
     return this;
   },
 
@@ -36,13 +37,13 @@ Vapour.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   appendFriendshipForms: function () {
-    var $selector = this.$('.friendships'), view;
+    var selector = this.$('.friendships'), view;
     if (this.model.get('is_current_user')) {
       view = new Vapour.Views.FriendshipsForm({model: this.model});
     } else {
       view = new Vapour.Views.FriendshipsSend({model: this.model});
     }
-    this.addSubview($selector, view);
+    this.addSubview(selector, view);
   }
 
 });

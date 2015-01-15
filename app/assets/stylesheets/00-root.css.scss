@@ -55,6 +55,7 @@ img {
 // Buttons
 
 .blue-button {
+  display: inline-block;
   padding: 10px 20px;
   text-shadow: -1px -1px #046DB3;
   color: #8FCBF2;
@@ -68,7 +69,14 @@ img {
   background: linear-gradient(to top, #057CCC, #0C96F2);
 }
 
+.blue-button:disabled {
+  color: #999;
+  background: linear-gradient(to top, #2B4E66, #3F6D8C);
+  cursor: default;
+}
+
 .green-button {
+  display: inline-block;
   padding: 10px 20px;
   text-shadow: -1px -1px #437A16;
   color: #96E366;
@@ -80,6 +88,12 @@ img {
 .green-button:hover {
   color: white;
   background: linear-gradient(to top, #51941B, #5FAD1F);
+}
+
+.green-button:disabled {
+  color: #999;
+  background: linear-gradient(to top, #232E1B, #374729);
+  cursor: default;
 }
 
 // Displays
