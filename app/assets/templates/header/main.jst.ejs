@@ -7,11 +7,7 @@
 
   <ul class="user-nav group">
     <% if (CurrUser.get('is_current_user')) { %>
-      <li>
-        <div class="user-thumb" data-id="<%= CurrUser.id %>" data-display-name="true">
-
-        </div>
-      </li>
+      <li class="user-thumb" data-id="<%= CurrUser.id %>" data-display-name="true"></li>
       <li><button class="cart">Cart</button></li>
       <li><button class="log-out">Log Out</button></li>
     <% } else { %>

@@ -1,5 +1,18 @@
 .user-link {
   display: inline-block;
+  position: relative;
+}
+
+.user-link.with-floating-name:hover:before {
+  content: attr(data-alias);
+  display: block;
+  position: absolute;
+  background: #222;
+  box-shadow: inset 0px 0px 1px #777, 1px 1px #555;
+  border: 1px solid #000;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -25%;
 }
 
 .user-thumb-avatar {
@@ -7,6 +20,8 @@
   height: 30px;
   border: 1px solid #000;
   float: left;
+  background-color: #222;
+  box-shadow: inset 0px 0px 1px #777;
 }
 
 .user-thumb-avatar img {

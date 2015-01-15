@@ -14,12 +14,12 @@ Vapour.Views.UsersEdit = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .edit-profile': 'createUser',
+    'submit .edit-profile': 'updateProfile',
     'change #input-avatar-upload': 'avatarInputChange',
     'click .close-modal': 'close'
   },
 
-  createUser: function (event) {
+  updateProfile: function (event) {
     event.preventDefault();
     var $target = $(event.currentTarget);
 
@@ -27,7 +27,8 @@ Vapour.Views.UsersEdit = Backbone.CompositeView.extend({
 
     this.model.save(data, {
       success: function(model, resp) {
-        Vapour.CurrentUser().set(resp);
+        Vapour.CurrentUser().set(Vapour.CurrentUser().parse(resp));
+        delete this.model._avatar
         Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
       error: function(model, resp) {

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:show, :index, :create] do
+    resources :users, only: [:show, :index, :create, :update] do
       get 'current', on: :collection
       post 'add_funds', on: :member
     end

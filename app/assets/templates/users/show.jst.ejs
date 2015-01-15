@@ -1,34 +1,48 @@
-<h1><%= user.escape('username') %></h1>
+<section class="user-show-header group">
+  <section class="user-show-header-two group">
+    <figure class="big-user-avatar">
+      <img src="<%= user.get('avatar_url') %>" alt="" />
+    </figure>
+    <h1 class="user-show-title"><%= user.escape('alias') %></h1>
+    <h2 class="user-show-username"><%= user.escape('username') %></h2>
+  </section>
+</section>
 
-<% if (user.get('is_current_user')) { %>
-  Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
-  <form class="add-funds">
-    <label>
-      Amount
-      <input type="number" name="user[add_funds]" value="0.00"
-      min="0" max="9999" step="0.01" class="funds">
-    </label>
-    <input type="submit" value="Add Funds">
-  </form>
-  <button class="edit-profile blue-button">Edit Your Profile</button>
-<% } %>
+<div class="user-show-body">
+  <section class="user-show-sidebar">
+    <div class="friendships">
 
-<div class="friendships">
+    </div>
+    <article class="user-show-friends block">
+      <h2>Friends:</h2>
+      <ul class="friends-list">
+        <% user.friends().each(function (friend) { %>
+          <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="true"></li>
+        <% }) %>
+      </ul>
+    </article>
+  </section>
 
+  <section class="user-show-content">
+    <% if (user.get('is_current_user')) { %>
+      Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
+      <form class="add-funds">
+        <label>
+          Amount
+          <input type="number" name="user[add_funds]" value="0.00"
+          min="0" max="9999" step="0.01" class="funds">
+        </label>
+        <input type="submit" value="Add Funds">
+      </form>
+      <button class="edit-profile blue-button">Edit Your Profile</button>
+    <% } %>
+
+    <h2>Bought Games:</h2>
+
+    <ul class="bought-games-list group">
+      <% user.boughtGames().each(function (game) { %>
+        <li><%= game.get('title') %></li>
+      <% }) %>
+    </ul>
+  </section>
 </div>
-
-<h2>Bought Games:</h2>
-
-<ul class="bought-games-list">
-  <% user.boughtGames().each(function (game) { %>
-    <li><%= game.get('title') %></li>
-  <% }) %>
-</ul>
-
-<h2>Friends:</h2>
-
-<ul class="friends-list">
-  <% user.friends().each(function (friend) { %>
-    <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="true"></li>
-  <% }) %>
-</ul>

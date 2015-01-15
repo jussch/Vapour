@@ -11,6 +11,14 @@ Backbone.ExtendedView = Backbone.CompositeView.extend({
       // $thumb.html(view.$el);
       this.addSubview($thumb, view);
     }
+  },
+
+  populateGames: function (selector, games) {
+    var $gameList = this.$(selector)
+    games.each(function (model) {
+      var view = new Vapour.Views.GameList({model: model})
+      this.addSubview($gameList, view);
+    }.bind(this))
   }
 
 })

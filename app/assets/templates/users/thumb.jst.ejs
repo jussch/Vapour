@@ -1,4 +1,11 @@
-<a href="#users/<%= user.id %>" class="user-link group">
+<a href="#users/<%= user.id %>"
+  <% if (!displayName) { %>
+    class="user-link with-floating-name group"
+    data-alias="<%= user.escape('alias') %>"
+  <% } else { %>
+    class="user-link group"
+  <% } %>
+  >
   <figure class="user-thumb-avatar">
     <img src="<%= user.get('avatar_url') %>" alt="" />
   </figure>

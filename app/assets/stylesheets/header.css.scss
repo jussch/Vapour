@@ -8,6 +8,7 @@ nav {
 .page-title {
   float: left;
   font-size: 26px;
+  letter-spacing: 3px;
 }
 
 .main-links {
@@ -31,7 +32,11 @@ nav {
   float: left;
 }
 
-.user-nav button, .user-nav a {
+.user-nav .user-thumb {
+  padding-top: 4px
+}
+
+.user-nav button {
   padding: 10px 20px;
   display: block;
 }

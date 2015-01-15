@@ -5,8 +5,8 @@ Vapour.Models.User = Backbone.Model.extend({
   toJSON: function() {
     var json = { user: _.clone( this.attributes ) };
 
-    if (this._image) {
-      json.post.avatar = this._avatar;
+    if (this._avatar) {
+      json.user.avatar = this._avatar;
     }
 
     return json;

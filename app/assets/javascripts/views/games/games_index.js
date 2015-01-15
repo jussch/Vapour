@@ -1,4 +1,4 @@
-Vapour.Views.GamesIndex = Backbone.CompositeView.extend({
+Vapour.Views.GamesIndex = Backbone.ExtendedView.extend({
 
   template: JST['games/index'],
 
@@ -11,16 +11,8 @@ Vapour.Views.GamesIndex = Backbone.CompositeView.extend({
     var content = this.template({ games: this.collection });
     this.$el.html(content);
     this.renderHeader();
-    this.populateGames();
+    this.populateGames(".game-list", this.collection);
     return this;
-  },
-
-  populateGames: function () {
-    var $gameList = this.$('.game-list')
-    this.collection.each(function (model) {
-      var view = new Vapour.Views.GameList({model: model})
-      this.addSubview($gameList, view);
-    }.bind(this))
   },
 
   renderHeader: function () {
