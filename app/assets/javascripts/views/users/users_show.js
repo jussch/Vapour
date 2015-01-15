@@ -16,7 +16,8 @@ Vapour.Views.UserShow = Backbone.ExtendedView.extend({
   },
 
   events: {
-    'submit .add-funds': "addFunds"
+    'submit .add-funds': "addFunds",
+    'click .edit-profile': "openEditProfile"
   },
 
   addFunds: function (event) {
@@ -34,6 +35,11 @@ Vapour.Views.UserShow = Backbone.ExtendedView.extend({
         this.model.fetch();
       }.bind(this)
     });
+  },
+
+  openEditProfile: function (event) {
+    var view = new Vapour.Views.UsersEdit({ model: this.model });
+    Vapour.RootRouter.trigger('swapModal', view);
   },
 
   appendFriendshipForms: function () {

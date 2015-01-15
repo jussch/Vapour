@@ -19,3 +19,20 @@
 .user-form {
   margin-top: 10px;
 }
+
+// EDIT
+
+.big-preview {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #000;
+}
+
+.file-preview {
+  float: left;
+}
+
+.file-preview img {
+  width: 100%;
+  height: 100%;
+}

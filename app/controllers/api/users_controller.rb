@@ -20,7 +20,6 @@ class Api::UsersController < Api::BaseController
 
   def create
     @user = User.new(user_params)
-    puts user_params
     if @user.save
       sign_in(@user)
       render :show
@@ -37,8 +36,18 @@ class Api::UsersController < Api::BaseController
     render json: {notices: ["funds have been added"]}
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render :show
+    else
+      render json: {errors: @user.errors.full_messages},
+        status: :unprocessable_entity
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:password, :username, :email)
+    params.require(:user).permit(:password, :username, :email, :alias, :avatar)
   end
 end

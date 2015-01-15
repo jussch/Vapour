@@ -3,7 +3,13 @@ Vapour.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
   toJSON: function() {
-    return { user: _.clone( this.attributes ) };
+    var json = { user: _.clone( this.attributes ) };
+
+    if (this._image) {
+      json.post.avatar = this._avatar;
+    }
+
+    return json;
   },
 
   boughtGames: function () {
