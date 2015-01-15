@@ -31,14 +31,6 @@ Vapour.Models.User = Backbone.Model.extend({
     return this._friends;
   },
 
-  friends: function() {
-    if (!this._friends) {
-      this._friends = new Vapour.Collections.Users();
-    }
-
-    return this._friends;
-  },
-
   recievedRequests: function() {
     if (!this._recievedRequests) {
       this._recievedRequests = new Vapour.Collections.Friendships([],{

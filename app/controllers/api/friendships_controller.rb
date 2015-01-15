@@ -1,11 +1,11 @@
-class Api::FriendshipsController < ApplicationController
+class Api::FriendshipsController < Api::BaseController
 
   before_action :api_require_signed_in!
 
   def create
     @reciever = User.find(params[:friendship][:reciever_id])
-    fs = current_user.sent_requests.new(reciever: @reciever.id)
-    fr = @reciever.recieved_requests.new(reciever: current_user.id)
+    fs = current_user.sent_requests.new(reciever_id: @reciever.id)
+    fr = @reciever.recieved_requests.new(reciever_id: current_user.id)
     fr.inverse, fs.inverse = fs, fr
     if fs.valid? && fr.valid?
       fs.save && fr.save

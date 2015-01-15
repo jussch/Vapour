@@ -50,7 +50,7 @@ Vapour.Views.FriendshipsForm = Backbone.ExtendedView.extend({
       type: 'DELETE',
       dataType: 'json',
       success: function (resp) {
-        this.model.fetch();
+        // this.model.fetch();
       }.bind(this)
     });
   }
