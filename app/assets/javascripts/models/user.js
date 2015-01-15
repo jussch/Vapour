@@ -48,7 +48,7 @@ Vapour.Models.User = Backbone.Model.extend({
 
     return this._recievedRequests;
   },
-  
+
   sentRequests: function() {
     if (!this._sentRequests) {
       this._sentRequests = new Vapour.Collections.Friendships([],{
@@ -70,9 +70,9 @@ Vapour.Models.User = Backbone.Model.extend({
   parse: function (resp) {
     var respAttr, funcAttr;
     for (var respAttr in this.parseSetup) {
-      funcAttr = this.parseSetup[respAttr]
       if (resp[respAttr]) {
-        this.[funcAttr]().set(resp[respAttr], { parse: true});
+        funcAttr = this.parseSetup[respAttr]
+        this[funcAttr]().set(resp[respAttr], { parse: true});
         delete resp[respAttr];
       }
     }

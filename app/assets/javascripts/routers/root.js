@@ -49,13 +49,13 @@ Vapour.Routers.Root = Backbone.Router.extend({
   },
 
   gameShow: function (id) {
-    var game = this.games.getOrFetch(id);
+    var game = this.games.getAndFetch(id);
     var view = new Vapour.Views.GameShow({ model: game });
     this.swapView(view);
   },
 
   gameEdit: function (id) {
-    var game = this.games.getOrFetch(id);
+    var game = this.games.getAndFetch(id);
     var view = new Vapour.Views.GamesForm({ model: game, collection: this.games });
     this.swapView(view);
   },
@@ -66,7 +66,7 @@ Vapour.Routers.Root = Backbone.Router.extend({
   },
 
   userShow: function (id) {
-    var user = Vapour.Users.getOrFetch(id);
+    var user = Vapour.Users.getAndFetch(id);
     var view = new Vapour.Views.UserShow({ model: user });
     this.swapView(view);
   },

@@ -1,0 +1,5 @@
+<% if (currUser.sentRequests.pluck('id').indexOf(user.id) >= 0) { %>
+  <button class="blue-button" disabled>Request Sent</button>
+<% } else { %>
+  <button class="blue-button send-request">Send Friend Request</button>
+<% } %>

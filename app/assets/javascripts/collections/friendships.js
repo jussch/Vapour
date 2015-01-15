@@ -1,4 +1,4 @@
-Vapour.Collections.Friendships = Backbone.Collections.extend({
+Vapour.Collections.Friendships = Backbone.Collection.extend({
 
   url: "api/friendships",
 
