@@ -168,11 +168,40 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
   background-color: #262626;
   border: 2px solid #444;
   box-shadow: 3px 3px 8px black;
   padding: 20px;
-  -webkit-transition: 1s;
+  max-height: 0;
+  max-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  -webkit-transition: max-height 1s, max-width 1s, opacity 1s;
+}
+
+#modal.nevereverevereveverve {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9;
+}
+
+#modal.expand-width {
+  max-width: 100%;
+}
+
+#modal.expand-height {
+  max-height: 100%;
+}
+
+#modal.fade-out {
+  opacity: 0;
 }
 
 .hidden {

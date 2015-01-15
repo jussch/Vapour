@@ -5,16 +5,19 @@
     </figure>
     <h1 class="user-show-title"><%= user.escape('alias') %></h1>
     <h2 class="user-show-username"><%= user.escape('username') %></h2>
+    <% if (user.get('is_current_user')) { %>
+      <button class="edit-profile blue-button">Edit Your Profile</button>
+    <% } %>
   </section>
 </section>
 
-<div class="user-show-body">
+<div class="user-show-body group">
   <section class="user-show-sidebar">
     <div class="friendships">
 
     </div>
     <article class="user-show-friends block">
-      <h2>Friends:</h2>
+      <h2 class="blue-h">Friends:</h2>
       <ul class="friends-list">
         <% user.friends().each(function (friend) { %>
           <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="true"></li>
@@ -25,24 +28,24 @@
 
   <section class="user-show-content">
     <% if (user.get('is_current_user')) { %>
-      Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
-      <form class="add-funds">
-        <label>
-          Amount
-          <input type="number" name="user[add_funds]" value="0.00"
-          min="0" max="9999" step="0.01" class="funds">
-        </label>
-        <input type="submit" value="Add Funds">
-      </form>
-      <button class="edit-profile blue-button">Edit Your Profile</button>
+      <section class="user-show-funds block">
+        Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
+        <form class="add-funds">
+          <label>
+            Amount
+            <input type="number" name="user[add_funds]" value="0.00"
+            min="0" max="9999" step="0.01" class="funds">
+          </label>
+          <input type="submit" value="Add Funds">
+        </form>
+      </section>
     <% } %>
 
-    <h2>Bought Games:</h2>
+    <article class="user-show-games">
+      <h2 class="blue-h">Bought Games:</h2>
 
-    <ul class="bought-games-list group">
-      <% user.boughtGames().each(function (game) { %>
-        <li><%= game.get('title') %></li>
-      <% }) %>
-    </ul>
+      <ul class="bought-games-list group">
+      </ul>
+    </article>
   </section>
 </div>

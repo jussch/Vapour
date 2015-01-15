@@ -1,4 +1,5 @@
 .user-show-header-two {
+  position: relative;
   background:
   radial-gradient(rgba(0,0,0, 0.5) 15%, transparent 16%) 0 0,
   radial-gradient(rgba(0,0,0, 0.5) 15%, transparent 16%) 8px 8px,
@@ -13,6 +14,7 @@
   background: linear-gradient(to top, #252a36, #353a46);
   border: 1px solid #000;
   box-shadow: 2px 2px 5px #000;
+  margin-bottom: 20px;
 }
 
 .big-user-avatar {
@@ -36,4 +38,42 @@
 
 .user-show-username {
   font-size: 16px;
+}
+
+.edit-profile {
+  bottom: 10px;
+  right: 10px;
+  position: absolute;
+}
+
+.user-show-body {
+  padding: 10px 50px;
+}
+
+.user-show-sidebar {
+  width: 300px;
+  float: right;
+}
+
+.user-show-content {
+  width: 450px;
+  float: left;
+  padding-right: 50px;
+}
+
+.bought-games-list .game-item {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.user-show-friends {
+  margin-top: 20px;
+}
+
+.user-show-friends h2 {
+  margin-bottom: 10px;
+}
+
+.user-show-games h2 {
+  margin-bottom: 10px;
 }

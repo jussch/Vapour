@@ -1,6 +1,8 @@
 Vapour.Views.FriendshipsSend = Backbone.ExtendedView.extend({
   template: JST['friendships/_send'],
 
+  className: "block",
+
   intialize: function () {
     this.listenTo(Vapour.CurrentUser(), "sync change", this.render);
     this.listenTo(this.model, "sync change", this.render);

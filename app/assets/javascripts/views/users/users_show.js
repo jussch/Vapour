@@ -4,7 +4,7 @@ Vapour.Views.UserShow = Backbone.ExtendedView.extend({
 
   initialize: function () {
     this.listenTo(Vapour.CurrentUser(), "change sync", this.render);
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change", this.render);
   },
 
   render: function () {
@@ -12,6 +12,7 @@ Vapour.Views.UserShow = Backbone.ExtendedView.extend({
     this.$el.html(content);
     this.appendFriendshipForms();
     this.addUserThumbs();
+    this.populateGames('.bought-games-list', this.model.boughtGames());
     return this;
   },
 

@@ -21,7 +21,9 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     var content = this.template({
       games: this.collection,
       search: this.query,
-      checkedTags: this.searchTags
+      checkedTags: this.searchTags,
+      page: this.page,
+      perPage: this.perPage
     });
     this.$el.html(content);
     this.renderHeader();
@@ -37,6 +39,7 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
 
   filterSearch: function (event) {
     $checkbox = $(event.currentTarget)//.children('.tag-sort-input');
+    this.page = 0;
     var val = parseInt($checkbox.val());
     if (this.query !== Vapour.Games.searchQuery) {
       Vapour.Games.searchQuery = this.query;
@@ -52,6 +55,8 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     }
     Vapour.Games.search();
     this.populateGames();
+    this.$('.page-display').html('Games through '+ this.page * this.perPage +
+    '..'+ (this.page + 1) * this.perPage + ' out of ' + this.collection.length)
   },
 
   prevPage: function (event) {
@@ -59,6 +64,8 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     if (this.page <= 0) {return;}
     this.page -= 1;
     this.populateGames();
+    this.$('.page-display').html('Games through '+ this.page * this.perPage +
+      '..'+ (this.page + 1) * this.perPage + ' out of ' + this.collection.length)
   },
 
   nextPage: function (event) {
@@ -66,6 +73,8 @@ Vapour.Views.GamesSort = Backbone.CompositeView.extend({
     if (this.page >= Math.floor(this.collection.length / this.perPage)) {return;}
     this.page += 1;
     this.populateGames();
+    this.$('.page-display').html('Games through '+ this.page * this.perPage +
+    '..'+ (this.page + 1) * this.perPage + ' out of ' + this.collection.length)
   },
 
   populateGames: function () {

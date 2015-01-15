@@ -27,6 +27,7 @@ Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
     this.model.save(data,{
       success: function(model, resp) {
         Vapour.CurrentUser().set(resp);
+        Vapour.Users.get(Vapour.CurrentUser().id).set('is_current_user', true);
         Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
       error: function(model, resp) {

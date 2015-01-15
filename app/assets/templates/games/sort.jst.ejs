@@ -2,36 +2,39 @@
 
 </div>
 
-<h1>Browse</h1>
+<section class="browse-main group">
+  <h1>Browse</h1>
 
-<% if (search) { %>
-  <h2>Searching with "<%= search %>"</h2>
-<% } %>
+  <% if (search) { %>
+    <h2>Searching with "<%= search %>"</h2>
+  <% } %>
+  <h2 class="page-display">Games through <%= page * perPage %>..<%= (page + 1) * perPage %> out of <%= games.length %></h2>
 
-<section>
-  <ul class="game-sorted-list group">
-  </ul>
-  <nav class="game-sorted-nav group">
-    <button class="nav-left">&larr;</button>
-    <button class="nav-right">&rarr;</button>
-  </nav>
-</section>
+  <section class="browse-content group">
+    <ul class="game-sorted-list group">
+    </ul>
+    <nav class="game-sorted-nav group">
+      <button class="nav-left">&larr;</button>
+      <button class="nav-right">&rarr;</button>
+    </nav>
+  </section>
 
-<section class="block">
-  <h2 class="tags-title">Filter by Tags</h2>
-  <ul class="sort-tags-list">
-    <% Vapour.Tags.each (function (tag) { %>
-      <li>
-        <label class="tag-sort-toggle">
-          <input type="checkbox" name="tags_checked[]"
-            value="<%= tag.id %>" class="tag-sort-input"
-            <% if (checkedTags.indexOf(tag.id) >= 0) { %>
-              checked
-            <% } %>
-            >
-          <%= tag.escape('name') %>
-        </label>
-      </li>
-    <% }) %>
-  </ul>
+  <section class="block browse-sidebar">
+    <h2 class="tags-title">Filter by Tags</h2>
+    <ul class="sort-tags-list">
+      <% Vapour.Tags.each (function (tag) { %>
+        <li>
+          <label class="tag-sort-toggle">
+            <input type="checkbox" name="tags_checked[]"
+              value="<%= tag.id %>" class="tag-sort-input"
+              <% if (checkedTags.indexOf(tag.id) >= 0) { %>
+                checked
+              <% } %>
+              >
+            <%= tag.escape('name') %>
+          </label>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
 </section>

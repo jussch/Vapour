@@ -1,0 +1,42 @@
+.browse-main {
+  padding: 0 50px;
+}
+
+.browse-content {
+  float:left;
+  width: 400px;
+  margin-right: 50px;
+}
+
+.browse-sidebar {
+  float: right;
+  width: 250px;
+}
+
+.game-sorted-nav {
+  width: 350px;
+}
+
+.nav-left, .nav-right {
+  padding: 1px 0;
+  width: 40px;
+  height: 100%;
+  text-align: center;
+  background: #123;
+  border-radius: 5px;
+  color: #48a;
+  border: 1px solid #aaa;
+}
+
+.nav-left:hover, .nav-right:hover {
+  color: #eee;
+  background: linear-gradient(to right, #2E516B, #315977);
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-right {
+  float: right;
+}

@@ -1,3 +1,6 @@
 <a href="#games/<%= game.id %>" class="game-item-link">
-    <%= game.escape('title') %> - $<%= game.get('price')  %>
+    <%= game.escape('title') %>
+    <% if (game.get('price')) { %>
+      - $<%= game.get('price')  %>
+    <% } %>
 </a>

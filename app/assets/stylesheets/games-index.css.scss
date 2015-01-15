@@ -68,25 +68,12 @@
   margin: 10px;
 }
 
-.game-item {
+.game-list li {
   float: left;
-  display: block;
   width: 286px;
-  margin-bottom: 10px;
-  box-shadow: 1px 1px 8px #3A607A;
 }
 
-.game-item:nth-child(3n+2) {
+.game-list li:nth-child(3n+2) {
   margin-left: 10px;
   margin-right: 10px;
-}
-
-.game-item-link {
-  display: block;
-  padding: 10px 20px;
-  background: #0562A1;
-}
-
-.game-item-link:hover {
-  background: linear-gradient(to right, #64ADDE,#2384C4);
 }

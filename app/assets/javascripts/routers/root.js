@@ -79,14 +79,26 @@ Vapour.Routers.Root = Backbone.Router.extend({
   },
 
   swapModal: function (modal) {
-    this._currentModal && this._currentModal.remove();
-    this._currentModal = modal;
-    this.$modalEl.html(modal.render().$el);
-    this.$modalEl.removeClass('hidden');
+    if (this._currentModal) {
+      this._currentModal.remove();
+    } else {
+      this._currentModal = modal;
+      this.$modalEl.html(modal.render().$el);
+      this.$modalEl.removeClass('hidden');
+      setTimeout(function () {
+        this.$modalEl.addClass('expand-width');
+      }.bind(this), 1)
+      setTimeout(function () {
+        this.$modalEl.addClass('expand-height');
+      }.bind(this), 500);
+    }
   },
 
   removeModal: function () {
-    this._currentModal && this._currentModal.remove();
+    if (this._currentModal) {
+      this._currentModal.remove();
+      this._currentModal = null;
+    }
     this.$modalEl.addClass('hidden');
   }
 });
