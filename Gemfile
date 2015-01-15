@@ -54,3 +54,8 @@ gem 'backbone-on-rails'
 
 gem 'pg_search'
 gem 'kaminari'
+
+gem "figaro"
+
+gem "paperclip"
+gem "aws-sdk"

@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  validates :username, :password_digest, :email, :funds, presence: true
+  validates :username, :password_digest, :email, :funds, :alias, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :funds, numericality: { greater_than_or_equal_to: 0}
+
+  has_attached_file :avatar, default_url: "missing.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :authored_games,
     class_name: "Game",
@@ -41,7 +44,7 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  after_initialize :ensure_session_token, :ensure_funds
+  after_initialize :ensure_session_token, :ensure_funds, :ensure_alias
 
   def self.find_by_creds(username, password)
     user = User.find_by_username(username)
@@ -74,6 +77,10 @@ class User < ActiveRecord::Base
 
   def ensure_funds
     self.funds ||= 0
+  end
+
+  def ensure_alias
+    self.alias ||= self.username
   end
 
 end

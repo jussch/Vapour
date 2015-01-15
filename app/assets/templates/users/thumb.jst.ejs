@@ -1,5 +1,10 @@
-<a href="#users/<%= user.id %>" class="user-link">
-  <% if (displayName) { %>
-    <%= user.escape('username') %>
-  <% } %>
+<a href="#users/<%= user.id %>" class="user-link group">
+  <figure class="user-thumb-avatar">
+    <img src="<%= user.get('avatar_url') %>" alt="" />
+  </figure>
+  <figcaption class="user-thumb-text">
+    <% if (displayName) { %>
+      <%= user.escape('alias') %>
+    <% } %>
+  </figcaption>
 </a>
