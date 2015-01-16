@@ -18,7 +18,10 @@
       Total:
       <strong class="cart-price">$<%= transactions.totalPrice() %></strong>
     </div>
-
+    <div class="cart-total">
+      Your Funds:
+      <strong class="cart-price">$<%= Vapour.CurrentUser().get('funds') %></strong>
+    </div>
     <button class="checkout green-button">Checkout</button>
   </div>
 
