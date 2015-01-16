@@ -18,7 +18,7 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
   },
 
   setupScreenshots: function () {
-    this.$screenshots = $('.game-screenshot-list');
+    this.$screenshots = this.$('.game-screenshot-list');
     var listLength = this.model.screenshots().length * 100;
     this.$screenshots.css('width', listLength);
     this.$screenshots.data('extra-width', Math.max(listLength-500, 0));

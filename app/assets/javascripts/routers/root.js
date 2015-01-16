@@ -72,15 +72,37 @@ Vapour.Routers.Root = Backbone.Router.extend({
   },
 
   swapView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.render().$el);
     this.removeModal();
+    var newView = function () {
+      this._currentView = view;
+      this.$rootEl.html(view.render().$el);
+      this.$rootEl.addClass('ani-zoom-in');
+      setTimeout(function () {
+        this.$rootEl.removeClass('ani-zoom-in')
+      }.bind(this), 300);
+    }.bind(this);
+
+    if (this._currentView) {
+      this.$rootEl.addClass('ani-zoom-out')
+      setTimeout(function () {
+        this.$rootEl.removeClass('ani-zoom-out')
+        this._currentView.remove();
+        newView();
+      }.bind(this), 400)
+    } else {
+      newView();
+    }
   },
 
   swapModal: function (modal) {
     if (this._currentModal) {
-      this._currentModal.remove();
+      this.$modalEl.addClass('fade-out');
+      setTimeout(function () {
+        this._currentModal.remove();
+        this._currentModal = modal;
+        this.$modalEl.html(modal.render().$el);
+        this.$modalEl.removeClass('fade-out');
+      }.bind(this), 500);
     } else {
       this._currentModal = modal;
       this.$modalEl.html(modal.render().$el);
@@ -90,15 +112,23 @@ Vapour.Routers.Root = Backbone.Router.extend({
       }.bind(this), 1)
       setTimeout(function () {
         this.$modalEl.addClass('expand-height');
+        this.$modalEl.removeClass('hidden');
       }.bind(this), 500);
     }
   },
 
   removeModal: function () {
-    if (this._currentModal) {
-      this._currentModal.remove();
-      this._currentModal = null;
-    }
-    this.$modalEl.addClass('hidden');
+    if (!this._currentModal) {return}
+    this.$modalEl.removeClass('expand-height');
+    setTimeout(function () {
+      this.$modalEl.removeClass('expand-width');
+    }.bind(this), 500)
+    setTimeout(function () {
+      this.$modalEl.addClass('hidden');
+      if (this._currentModal) {
+        this._currentModal.remove();
+        this._currentModal = null;
+      }
+    }.bind(this), 1000);
   }
 });

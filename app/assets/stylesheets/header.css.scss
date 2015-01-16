@@ -6,9 +6,28 @@ nav {
 }
 
 .page-title {
+  position: relative;
   float: left;
   font-size: 26px;
   letter-spacing: 3px;
+  padding-bottom: 0;
+}
+
+.page-title:hover {
+  -webkit-animation: vapourBlurTo 1s ease both;
+}
+
+.page-title:not(:hover) {
+  -webkit-animation: vapourBlurFrom 1s 1s ease both;
+}
+
+
+@-webkit-keyframes vapourBlurTo {
+  to { -webkit-filter: blur(5px); transform: scale(1.5); opacity: 0;}
+}
+
+@-webkit-keyframes vapourBlurFrom {
+  from { -webkit-filter: blur(5px); transform: scale(1.5); opacity: 0;}
 }
 
 .main-links {
