@@ -75,7 +75,9 @@
 
       <ul class="friends-who-own group">
         <% Vapour.CurrentUser().friends().each(function (friend) { %>
-          <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="false"></li>
+          <% if (friend.boughtGames().pluck('id').indexOf(game.id) >= 0) { %>
+            <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="false"></li>
+          <% } %>
         <% }) %>
       </ul>
     </section>

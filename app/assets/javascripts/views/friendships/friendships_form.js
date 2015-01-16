@@ -34,6 +34,7 @@ Vapour.Views.FriendshipsForm = Backbone.ExtendedView.extend({
       dataType: 'json',
       success: function (resp) {
         this.model.fetch();
+        user.fetch();
       }.bind(this)
     });
   },
@@ -51,6 +52,7 @@ Vapour.Views.FriendshipsForm = Backbone.ExtendedView.extend({
       dataType: 'json',
       success: function (resp) {
         this.model.fetch();
+        user.fetch();
       }.bind(this)
     });
   }
