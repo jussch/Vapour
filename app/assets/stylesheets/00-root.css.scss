@@ -105,6 +105,7 @@ img {
   padding: 10px 20px;
   margin: 5px 0;
   border: 1px solid #AD4E3E;
+  -webkit-animation: bopIn 0.3s linear both;
 }
 
 .notices li, .notice {
@@ -114,11 +115,21 @@ img {
   padding: 10px 20px;
   margin: 5px 0;
   border: 1px solid #598ACF;
+  overflow: hidden;
 }
 
 .errors li:after, .notices li:after {
   content: "";
   display: block;
+}
+
+@-webkit-keyframes bopIn {
+  0% { transform: translateX(-10px);}
+  20% { transform: translateX(8px);}
+  40% { transform: translateX(-6px);}
+  60% { transform: translateX(4px);}
+  80% { transform: translateX(-2px);}
+  100% { transform: translateX(0);}
 }
 
 // Body

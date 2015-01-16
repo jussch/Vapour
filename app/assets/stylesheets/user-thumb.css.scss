@@ -6,6 +6,9 @@
 .user-link.with-floating-name:hover:before {
   content: attr(data-alias);
   display: block;
+  width: -webkit-max-content;
+  width: max-content;
+  max-width: 200px;
   position: absolute;
   z-index: 5;
   padding: 10px;

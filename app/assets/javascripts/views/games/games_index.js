@@ -8,10 +8,15 @@ Vapour.Views.GamesIndex = Backbone.ExtendedView.extend({
   },
 
   render: function () {
-    var content = this.template({ games: this.collection });
+    var featured = this.collection.filter(function (game) {
+      return game.get('sale_type') === "FEATURED";
+    });
+    var featuredCollection = new Vapour.Collections.Games(featured);
+
+    var content = this.template();
     this.$el.html(content);
     this.renderHeader();
-    this.populateGames(".game-list", this.collection);
+    this.populateGames(".game-list", featuredCollection);
     return this;
   },
 
