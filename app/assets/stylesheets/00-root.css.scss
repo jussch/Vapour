@@ -184,7 +184,8 @@ img {
   max-height: 0;
   max-width: 0;
   opacity: 1;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   -webkit-transition: max-height 0.5s, max-width 0.5s, opacity 0.5s, padding 0.5s;
 }
 
@@ -201,13 +202,13 @@ img {
 }
 
 #modal.expand-width {
-  max-width: 50%;
+  max-width: 70%;
   padding-right: 20px;
   padding-left: 20px;
 }
 
 #modal.expand-height {
-  max-height: 50%;
+  max-height: 70%;
   padding-top: 20px;
   padding-bottom: 20px;
 }

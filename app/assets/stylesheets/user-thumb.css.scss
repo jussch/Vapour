@@ -7,12 +7,15 @@
   content: attr(data-alias);
   display: block;
   position: absolute;
+  z-index: 5;
+  padding: 10px;
   background: #222;
   box-shadow: inset 0px 0px 1px #777, 1px 1px #555;
   border: 1px solid #000;
   left: 50%;
-  transform: translateX(-50%);
-  top: -25%;
+  transform: translate(-50%, -100%);
+  top: -10px;
+  -webkit-animation: fadeIn 0.5s ease both;
 }
 
 .user-thumb-avatar {
@@ -32,4 +35,8 @@
 .user-thumb-text {
   float: left;
   padding: 6px;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 1;}
 }

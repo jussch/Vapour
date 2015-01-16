@@ -18,7 +18,7 @@ Vapour.Views.UserShow = Backbone.ExtendedView.extend({
 
   events: {
     'submit .add-funds': "addFunds",
-    'click .edit-profile': "openEditProfile"
+    'click .edit-profile-button': "openEditProfile"
   },
 
   addFunds: function (event) {

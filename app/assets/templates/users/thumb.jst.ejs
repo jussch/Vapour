@@ -9,9 +9,9 @@
   <figure class="user-thumb-avatar">
     <img src="<%= user.get('avatar_url') %>" alt="" />
   </figure>
-  <figcaption class="user-thumb-text">
-    <% if (displayName) { %>
-      <%= user.escape('alias') %>
-    <% } %>
-  </figcaption>
+  <% if (displayName) { %>
+    <figcaption class="user-thumb-text">
+        <%= user.escape('alias') %>
+    </figcaption>
+  <% } %>
 </a>

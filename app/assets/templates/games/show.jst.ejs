@@ -68,4 +68,16 @@
   <section class="authorship block">
     Game by <%= game.author().escape('username') %>
   </section>
+
+  <% if (Vapour.CurrentUser().get('is_current_user')) { %>
+    <section class="friendship-game-show block">
+      <h2>Friends who own it:</h2>
+
+      <ul class="friends-who-own group">
+        <% Vapour.CurrentUser().friends().each(function (friend) { %>
+          <li class="user-thumb" data-id="<%= friend.id %>" data-display-name="false"></li>
+        <% }) %>
+      </ul>
+    </section>
+  <% } %>
 </article>

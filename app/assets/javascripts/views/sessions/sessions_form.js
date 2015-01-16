@@ -15,19 +15,24 @@ Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
 
   events: {
     'submit .sign-in-form': 'createSession',
-    'click .close-modal': 'close'
+    'click .close-modal': 'close',
+    'click .guest-sign-in': 'guestSignIn'
   },
 
   createSession: function (event) {
     event.preventDefault();
     var $target = $(event.currentTarget);
-
-    var data = $target.serializeJSON().user;
+    
+    if (this.guestLogin) {
+      var data = this.guestLogin;
+    } else {
+      var data = $target.serializeJSON().user;
+    }
 
     this.model.save(data,{
       success: function(model, resp) {
-        Vapour.CurrentUser().set(resp);
-        Vapour.Users.get(Vapour.CurrentUser().id).set('is_current_user', true);
+        Vapour.CurrentUser().set(Vapour.CurrentUser().parse(resp));
+        Vapour.Users.fetchModel(Vapour.CurrentUser().id);
         Vapour.RootRouter.trigger('removeModal');
       }.bind(this),
       error: function(model, resp) {
@@ -40,6 +45,12 @@ Vapour.Views.SessionsForm = Backbone.CompositeView.extend({
   close: function (event) {
     event.preventDefault();
     Vapour.RootRouter.trigger('removeModal');
+  },
+
+  guestSignIn: function (event) {
+    event.preventDefault();
+    this.guestLogin = {username: "admin", password: "password"};
+    this.createSession(event);
   }
 
 });

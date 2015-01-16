@@ -1,4 +1,4 @@
-Vapour.Views.GameShow = Backbone.CompositeView.extend({
+Vapour.Views.GameShow = Backbone.ExtendedView.extend({
 
   template: JST['games/show'],
 
@@ -13,6 +13,7 @@ Vapour.Views.GameShow = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     this.setupScreenshots();
+    this.addUserThumbs();
 
     return this;
   },

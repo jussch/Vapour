@@ -32,6 +32,11 @@ Backbone.ExtendedCollection = Backbone.Collection.extend({
     }
 
     return model;
+  },
+
+  fetchModel: function (id) {
+    var model = this.get(id)
+    model.fetch();
   }
 
 });

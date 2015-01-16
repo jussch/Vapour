@@ -7,6 +7,10 @@ end
 
 json.friends @user.friends do |friend|
   json.(friend, :id, :username)
+
+  json.bought_games friend.bought_games do |game|
+    json.(game, :id, :title)
+  end
 end
 
 json.is_current_user (@user.id == current_user.try(:id))

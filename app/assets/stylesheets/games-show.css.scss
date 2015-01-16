@@ -132,6 +132,29 @@
   padding: 10px;
 }
 
+.friendship-game-show h2 {
+  margin-bottom: 25px;
+}
+
+.friends-who-own .user-thumb {
+  float: left;
+  margin-bottom: 25px;
+}
+
+.friends-who-own .user-thumb:nth-child(3n+2) {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.friends-who-own .user-thumb-avatar {
+  width: 60px;
+  height: 60px;
+}
+
+.game-sidebar > .block {
+  margin-bottom: 20px;
+}
+
 .block {
   background-color: #171A21;
   padding: 20px;

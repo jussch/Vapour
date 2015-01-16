@@ -26,8 +26,7 @@ Vapour.Views.HeaderMain = Backbone.ExtendedView.extend({
       type: 'DELETE',
       dataType: 'json',
       success: function (resp) {
-        Vapour.Users.get(Vapour.CurrentUser().id).set({'is_current_user': false});
-        console.log(Vapour.Users.get(Vapour.CurrentUser().id))
+        Vapour.Users.fetchModel(Vapour.CurrentUser().id);
         Vapour.CurrentUser().clear();
       }
     });
