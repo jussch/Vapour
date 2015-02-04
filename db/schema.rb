@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116171128) do
+ActiveRecord::Schema.define(version: 20150204215112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,18 @@ ActiveRecord::Schema.define(version: 20150116171128) do
   add_index "friendships", ["sender_id"], name: "index_friendships_on_sender_id", using: :btree
 
   create_table "games", force: true do |t|
-    t.string   "title",                                                  null: false
-    t.text     "synopsis",                                               null: false
-    t.text     "description",                                            null: false
-    t.decimal  "price",       precision: 6, scale: 2,                    null: false
-    t.integer  "author_id",                                              null: false
+    t.string   "title",                                                               null: false
+    t.text     "synopsis",                                                            null: false
+    t.text     "description",                                                         null: false
+    t.decimal  "price",                    precision: 6, scale: 2,                    null: false
+    t.integer  "author_id",                                                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "sale_type",                           default: "NORMAL"
+    t.string   "sale_type",                                        default: "NORMAL"
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
   end
 
   add_index "games", ["author_id"], name: "index_games_on_author_id", using: :btree
@@ -48,6 +52,10 @@ ActiveRecord::Schema.define(version: 20150116171128) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "screenshots", ["game_id"], name: "index_screenshots_on_game_id", using: :btree

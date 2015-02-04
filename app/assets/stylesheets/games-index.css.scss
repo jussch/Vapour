@@ -65,15 +65,27 @@
 }
 
 .game-list {
-  margin: 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .game-list li {
-  float: left;
-  width: 286px;
+  width: 280px;
+  margin: 10px auto;
+  height: 150px;
 }
 
-.game-list li:nth-child(3n+2) {
-  margin-left: 10px;
-  margin-right: 10px;
+.game-list li:first-child {
+  width: 900px;
+  height: 300px;
 }

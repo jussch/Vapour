@@ -59,3 +59,5 @@ gem "figaro"
 
 gem "paperclip"
 gem "aws-sdk"
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

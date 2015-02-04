@@ -40,3 +40,16 @@
 .nav-right {
   float: right;
 }
+
+.tag-sort-toggle {
+  cursor: pointer;
+  color: #aaa;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.tag-sort-toggle:hover {
+  color: #fff;
+}

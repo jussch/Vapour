@@ -13,7 +13,7 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
       tags: Vapour.Tags,
       errors: this.errors
     });
-    delete this.errors
+    delete this.errors;
 
     this.$el.html(content);
     return this;
@@ -37,7 +37,7 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
       error: function(model, resp) {
         console.log(resp);
         this.errors = resp.responseJSON.errors;
-        this.render()
+        this.render();
       }.bind(this)
     });
   }
