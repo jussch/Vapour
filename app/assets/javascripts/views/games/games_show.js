@@ -41,6 +41,7 @@ Vapour.Views.GameShow = Backbone.ExtendedView.extend({
 
   events: {
     'click .add-screenshot': 'screenshotForm',
+    'click .delete-screenshot': 'screenshotDelete',
     'click .add-to-cart': 'addToCart',
     'click .screenshot-thumb': 'activateImage',
     'click .slide-left': "slideLeft",
@@ -57,6 +58,16 @@ Vapour.Views.GameShow = Backbone.ExtendedView.extend({
     });
 
     Vapour.RootRouter.trigger('swapModal', view);
+  },
+
+  screenshotDelete: function (event) {
+    event.preventDefault();
+    if (!this.$activeThumb) {return;}
+
+    var id = this.$activeThumb.data('id');
+    this.model.screenshots().get(id).destroy({
+      success: this.render.bind(this)
+    });
   },
 
   addToCart: function (event) {
@@ -106,7 +117,7 @@ Vapour.Views.GameShow = Backbone.ExtendedView.extend({
     prevChild.length && this.activate(prevChild);
 
     var index = this.$activeThumb.parent().index('li');
-    var newLeft = Math.min((index - 4) * -100,0)
+    var newLeft = Math.min((index - 5) * -100,0)
     newLeft = Math.max((newLeft), -this.$screenshots.data('extra-width'));
     this.$screenshots.css('left', newLeft);
     this.$sliderBar.css('left', -newLeft / this.$screenshots.data('extra-width') * 340);
@@ -118,7 +129,7 @@ Vapour.Views.GameShow = Backbone.ExtendedView.extend({
     nextChild.length && this.activate(nextChild);
 
     var index = this.$activeThumb.parent().index('li');
-    var newLeft = Math.min((8 - index) * 100,0)
+    var newLeft = Math.min((9 - index) * 100,0)
     newLeft = Math.max((newLeft), -this.$screenshots.data('extra-width'));
     this.$screenshots.css('left', newLeft);
     this.$sliderBar.css('left', -newLeft / this.$screenshots.data('extra-width') * 340);

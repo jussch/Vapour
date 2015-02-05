@@ -1,4 +1,4 @@
-<h1>Add a Screenshot</h1>
+<h1 class="user-title">Add a Screenshot</h1>
 
 
 <ul class="errors">
@@ -13,8 +13,17 @@
 
   <label class="input-label">
     <strong class="input-name">URL</strong>
-    <input type="text" name="screenshot[image_url]" value="<%= screenshot.get('image_url') %>">
+    <input type="text" name="screenshot[image_url]" value="<%= screenshot.get('image_url') %>" class="url-upload">
   </label>
+
+  <label class="input-label">
+    <strong class="input-name">Or Upload an Image</strong>
+    <input type="file" name="screenshot[file]" value="" id="file-screenshot-upload">
+  </label>
+
+  <figure class="file-preview big-preview">
+    <img src="<%= screenshot.get('image_url') %>" class="preview-screenshot-upload" />
+  </figure>
 
   <input type="submit" name="Submit" class="blue-button">
 

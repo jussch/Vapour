@@ -4,6 +4,7 @@
   <div class="block">
     <a href="#games/<%= game.id %>/edit" class= "blue-button">Edit Your Game</a>
     <button class="add-screenshot blue-button">Add Screenshots</button>
+    <button class="delete-screenshot blue-button">Delete Active Screenshot</button>
   </div>
 <% } %>
 
@@ -12,8 +13,8 @@
     <figure class="screenshot-display"></figure>
     <ul class="game-screenshot-list group">
       <% game.screenshots().each( function(screenshot, index){ %>
-        <li class="game-screenshot" data-ord="<%= index %>">
-          <figure class="screenshot-thumb">
+        <li class="game-screenshot" data-ord="<%= index %>" >
+          <figure class="screenshot-thumb" data-id="<%= screenshot.id %>">
             <img src="<%= screenshot.get('image_url') %>" alt="" />
           </figure>
         </li>

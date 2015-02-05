@@ -20,7 +20,8 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
 
   events: {
     'submit .screenshot-form': 'createScreenshot',
-    'click .close-modal': 'close'
+    'click .close-modal': 'close',
+    'change #file-screenshot-upload': 'fileInputChange'
   },
 
   createScreenshot: function (event) {
@@ -29,6 +30,19 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
 
     var data = $target.serializeJSON().screenshot;
     data.game_id = this.game.id;
+
+    console.log(data);
+    console.log(this.model._file);
+
+    if (this.model._file && data.image_url !== "") {
+      this.errors = ["Please only do one: upload from file or give an URL"];
+      this.render();
+      return;
+    } else if (!data.image_url.match(/http(s)?:\/\//) && !this.model._file) {
+      this.errors = ["Please give a valid http url."];
+      this.render();
+      return;
+    }
 
     this.model.save(data,{
       success: function() {
@@ -45,6 +59,30 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
   close: function (event) {
     event.preventDefault();
     Vapour.RootRouter.trigger('removeModal');
+  },
+
+  fileInputChange: function (event) {
+    var self = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+      self._updatePreview(reader.result);
+      self.$(".url-upload").attr('val', "");
+      self.model._file = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this._updatePreview("");
+      delete this.model._file;
+    }
+  },
+
+  _updatePreview: function(src) {
+    this.$el.find(".preview-screenshot-upload").attr("src", src);
   }
+
 
 });

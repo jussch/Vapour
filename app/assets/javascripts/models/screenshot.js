@@ -3,7 +3,13 @@ Vapour.Models.Screenshot = Backbone.Model.extend({
   urlRoot: "/api/screenshots",
 
   toJSON: function() {
-    return { screenshot: _.clone( this.attributes ) };
+    var json = { screenshot: _.clone( this.attributes ) };
+
+    if (this._file) {
+      json.screenshot.file = this._file;
+    }
+
+    return json;
   }
 
 });
