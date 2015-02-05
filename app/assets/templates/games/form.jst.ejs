@@ -45,6 +45,15 @@
     <% }); %>
   </section>
 
+  <label class="input-label">
+    <strong class="input-name">Cover Image</strong>
+    <input type="file" name="game[cover_image]" value="" id="game-cover-image-upload">
+  </label>
+
+  <figure class="file-preview big-preview">
+    <img id="game-cover-image-preview" src="<%= game.get('cover_image_url') %>">
+  </figure>
+
   <input type="submit" name="Submit" class="submit blue-button">
 
 </form>

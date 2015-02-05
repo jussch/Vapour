@@ -1,1 +1,3 @@
-json.extract!(@screenshot, :id, :image_url, :game_id)
+json.extract!(@screenshot, :id, :game_id)
+
+json.image_url asset_path(@screenshot.get_image_url)

@@ -1,6 +1,10 @@
-<a href="#games/<%= game.id %>" class="game-item-link">
-    <%= game.escape('title') %>
+<a href="#games/<%= game.id %>" class="game-item-link group">
+    <figure class="game-item-link-image">
+    	<img src="<%= game.get('cover_image_url') %>">
+    </figure>
+    <h2 class="game-item-link-title"><%= game.escape('title') %></h2>
+    <h3 class="game-item-link-tags"><%= game.tags().pluck('name').join(", ") %></h3>
     <% if (game.get('price')) { %>
-      - $<%= game.get('price')  %>
+      <div class="game-item-link-price">$<%= game.get('price')  %></div>
     <% } %>
 </a>

@@ -14,7 +14,7 @@ class Api::GamesController < Api::BaseController
   def create
     @game = current_user.authored_games.new(game_params)
     if @game.save
-      render json: @game
+      render :show
     else
       render json: {errors: @game.errors.full_messages}, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class Api::GamesController < Api::BaseController
 
   def update
     if @game.update(game_params)
-      render json: @game
+      render :show
     else
       render json: {errors: @game.errors.full_messages}, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class Api::GamesController < Api::BaseController
 
   private
   def game_params
-    params.require(:game).permit(:title, :description, :synopsis, :price, tag_ids: [])
+    params.require(:game).permit(:title, :description, :synopsis, :price, :cover_image, tag_ids: [])
   end
 
   def ensure_correct_author

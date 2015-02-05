@@ -21,7 +21,7 @@ class Api::ScreenshotsController < Api::BaseController
 
   private
   def screenshot_params
-    params.require(:screenshot).permit(:image_url, :game_id)
+    params.require(:screenshot).permit(:image_url, :game_id, :file)
   end
 
 end

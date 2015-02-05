@@ -20,7 +20,8 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .game-form': 'createGame'
+    'submit .game-form': 'createGame',
+    'change #game-cover-image-upload': 'coverImageInputChange'
   },
 
   createGame: function (event) {
@@ -30,8 +31,10 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
     var data = $target.serializeJSON().game;
 
     this.model.save(data,{
-      success: function() {
+      success: function(updated) {
         this.collection.add(this.model, { merge: true });
+        this.model.set(this.model.parse(updated));
+        delete this.model._cover_image;
         Backbone.history.navigate('games/'+this.model.id, { trigger: true });
       }.bind(this),
       error: function(model, resp) {
@@ -40,6 +43,28 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
         this.render();
       }.bind(this)
     });
+  },
+
+  coverImageInputChange: function (event) {
+    var self = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+      self._updatePreview(reader.result);
+      self.model._cover_image = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this._updatePreview("");
+      delete this.model._cover_image;
+    }
+  },
+
+  _updatePreview: function(src) {
+    this.$el.find("#game-cover-image-preview").attr("src", src);
   }
 
 });

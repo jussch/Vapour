@@ -3,7 +3,13 @@ Vapour.Models.Game = Backbone.Model.extend({
   urlRoot: "/api/games",
 
   toJSON: function() {
-    return { game: _.clone( this.attributes ) }
+    var json = { game: _.clone( this.attributes ) };
+
+    if (this._cover_image) {
+      json.game.cover_image = this._cover_image;
+    }
+
+    return json;
   },
 
   screenshots: function () {

@@ -9,7 +9,8 @@ json.author do
 end
 
 json.screenshots @game.screenshots do |screenshot|
-  json.(screenshot, :id, :image_url)
+  json.(screenshot, :id)
+  json.image_url asset_path(screenshot.get_image_url)
 end
 
 json.tags @game.tags do |tag|
