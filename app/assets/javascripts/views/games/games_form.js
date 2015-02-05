@@ -29,6 +29,7 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
     var $target = $(event.currentTarget);
 
     var data = $target.serializeJSON().game;
+    this.$('.submit').prop('disabled', true);
 
     this.model.save(data,{
       success: function(updated) {
@@ -40,6 +41,7 @@ Vapour.Views.GamesForm = Backbone.CompositeView.extend({
       error: function(model, resp) {
         console.log(resp);
         this.errors = resp.responseJSON.errors;
+        this.$('.submit').prop('disabled', false);
         this.render();
       }.bind(this)
     });

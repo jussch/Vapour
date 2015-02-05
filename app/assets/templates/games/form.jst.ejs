@@ -35,15 +35,18 @@
   </label>
 
   <input type="hidden" name="game[tag_ids][]" value="">
-  <section class="tag-selection group">
-    <% tags.each(function(tag) { %>
-    <label class="tag-input">
-      <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
-      <%= game.checkIfTagsInclude(tag) %> >
-      <%= tag.get('name') %>
-    </label>
-    <% }); %>
-  </section>
+  <div class="block tag-input-field">
+    <h2 class="tag-input-section">Tags</h1>
+    <section class="tag-selection group">
+      <% tags.each(function(tag) { %>
+      <label class="tag-input tag-selection-tag">
+        <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
+        <%= game.checkIfTagsInclude(tag) %> >
+        <%= tag.get('name') %>
+      </label>
+      <% }); %>
+    </section>
+  </div>
 
   <label class="input-label">
     <strong class="input-name">Cover Image</strong>

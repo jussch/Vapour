@@ -42,6 +42,8 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
       return;
     }
 
+    this.$('.submit').prop('disabled', true);
+
     this.model.save(data,{
       success: function() {
         this.collection.add(this.model, { merge: true });
@@ -49,6 +51,7 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
       }.bind(this),
       error: function(model, resp) {
         this.errors = resp.responseJSON.errors;
+        this.$('.submit').prop('disabled', false);
         this.render()
       }.bind(this)
     });

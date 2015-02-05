@@ -26,7 +26,7 @@
 <input type="hidden" name="game[tag_ids][]" value="">
 <section class="tag-selection">
   <% Tag.all.each do |tag| %>
-    <label>
+    <label class="tag-selection-tag">
       <input type="checkbox" name="game[tag_ids][]" value="<%= tag.id %>"
         <%= check_box?(tag,@game) %> >
       <%= tag.name %>

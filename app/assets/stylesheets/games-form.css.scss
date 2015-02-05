@@ -1,0 +1,38 @@
+.tag-input-field {
+	width: 300px;
+	margin: 20px 0;
+}
+
+.tag-input-section {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.tag-selection {
+	display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.tag-selection-tag {
+	display: block;
+	width: 140px;
+	margin: 5px auto;
+	color: #aaa;
+	cursor: pointer;
+	-webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.tag-selection-tag:hover {
+	color: #fff;
+}

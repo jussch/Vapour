@@ -1,20 +1,21 @@
 .game-item-link {
   display: block;
   position: relative;
-  padding: 10px 20px;
+  /*padding: 10px 10px;*/
   background: #0562A1;
   height: 100%;
   box-sizing: border-box;
+  border: 1px solid #0562A1;
 }
 
 .game-item-link:hover {
   background: linear-gradient(to right, #64ADDE,#2384C4);
+  border: 1px solid #fff;
 }
 
 .game-item {
   display: block;
   margin-bottom: 10px;
-  box-shadow: 1px 1px 8px #3A607A;
 }
 
 .game-item-link-image {
@@ -23,10 +24,17 @@
 	overflow: hidden;
 	float: left;
 	margin-right: 10px;
+	box-sizing: border-box;
 }
 
 .game-item-link-image img {
 	width: 100%;
+}
+
+.game-item-link-title {
+	text-shadow: 1px 1px #000;
+	padding-top: 10px;
+	padding-right: 10px;
 }
 
 .game-item-link-tags {
@@ -36,13 +44,13 @@
 
 .game-item-link-price {
 	position: absolute;
-	right: 5px;
-	bottom: 5px;
-	border-radius: 5px;
+	right: 0;
+	bottom: 0;
+	border-radius: 0;
 	background: #000;
-	width: 60px;
+	width: 40px;
 	text-align: center;
 	padding: 5px;
-	opacity: 0.6;
-	font-size: 12px;
+	opacity: 0.9;
+	font-size: 10px;
 }
