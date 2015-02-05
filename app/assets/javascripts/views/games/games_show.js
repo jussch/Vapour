@@ -4,7 +4,7 @@ Vapour.Views.GameShow = Backbone.ExtendedView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.screenshots(), "sync", this.render);
+    this.listenTo(this.model.screenshots(), "sync change", this.render);
     this.listenTo(Vapour.CurrentUser(), "change", this.render);
   },
 

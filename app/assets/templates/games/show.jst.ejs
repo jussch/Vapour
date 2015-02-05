@@ -30,6 +30,9 @@
   </section>
 
   <section class="game-synopsis">
+    <figure class="game-cover-image">
+      <img src="<%= game.get('cover_image_url') %>">
+    </figure>
     <p>
       <%= game.escape('synopsis') %>
     </p>

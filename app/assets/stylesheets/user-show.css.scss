@@ -62,8 +62,8 @@
 }
 
 .bought-games-list .game-item {
-  margin: 0;
   margin-bottom: 10px;
+  height: 100px;
 }
 
 .user-show-friends {
@@ -76,4 +76,18 @@
 
 .user-show-games h2 {
   margin-bottom: 10px;
+}
+
+.user-show-funds {
+  margin-bottom: 20px;
+}
+
+.current-funds {
+
+}
+
+.funds {
+  background: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
 }

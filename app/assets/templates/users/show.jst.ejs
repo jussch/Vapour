@@ -29,14 +29,14 @@
   <section class="user-show-content">
     <% if (user.get('is_current_user')) { %>
       <section class="user-show-funds block">
-        Current Funds: <strong class="funds">$<%= user.get('funds') %></strong>
+        <h2 class="current-funds">Current Funds: <strong class="funds">$<%= user.get('funds') %></strong></h2>
         <form class="add-funds">
-          <label>
-            Amount
+          <label class="input-label">
+            <strong class="input-name">Add:</strong>
             <input type="number" name="user[add_funds]" value="0.00"
             min="0" max="9999" step="0.01" class="funds">
           </label>
-          <input type="submit" value="Add Funds">
+          <input type="submit" value="Add Funds" class="green-button">
         </form>
       </section>
     <% } %>

@@ -1,6 +1,10 @@
 Vapour
 ======
 
+###TODO:
+- Add CoverImage to game show.
+- Make it look pretty.
+
 ###MVP Todo List:
   - Homepage
   - Game List View

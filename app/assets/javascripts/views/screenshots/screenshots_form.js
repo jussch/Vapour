@@ -31,11 +31,9 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
     var data = $target.serializeJSON().screenshot;
     data.game_id = this.game.id;
 
-    console.log(data);
-    console.log(this.model._file);
-
     if (this.model._file && data.image_url !== "") {
-      this.errors = ["Please only do one: upload from file or give an URL"];
+      this.errors = ["Please only do one: upload from file or give a URL"];
+      delete this.model._file;
       this.render();
       return;
     } else if (!data.image_url.match(/http(s)?:\/\//) && !this.model._file) {
@@ -68,7 +66,7 @@ Vapour.Views.ScreenshotsForm = Backbone.CompositeView.extend({
 
     reader.onloadend = function() {
       self._updatePreview(reader.result);
-      self.$(".url-upload").attr('val', "");
+      self.$(".url-upload").val("");
       self.model._file = reader.result;
     }
 

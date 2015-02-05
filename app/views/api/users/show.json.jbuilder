@@ -1,4 +1,6 @@
-json.extract!(@user, :id, :username, :funds, :alias)
+json.extract!(@user, :id, :username, :alias)
+
+json.funds(@user.round_funds)
 
 json.avatar_url asset_path(@user.avatar.url)
 json.bought_games @user.bought_games do |game|
